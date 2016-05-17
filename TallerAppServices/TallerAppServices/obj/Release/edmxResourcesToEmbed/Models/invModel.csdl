@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="inv001Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ubicaciones">
+    <Key>
+      <PropertyRef Name="idubicacion" />
+    </Key>
+    <Property Name="idubicacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="desUbicacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ubicacionesDetalle" Relationship="Self.FK_U_UD" FromRole="ubicaciones" ToRole="ubicacionesDetalle" />
+  </EntityType>
+  <EntityType Name="ubicacionesDetalle">
+    <Key>
+      <PropertyRef Name="idUbicacionDetalle" />
+    </Key>
+    <Property Name="idUbicacionDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idubicacion" Type="Int32" />
+    <Property Name="desDetalle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ubicaciones" Relationship="Self.FK_U_UD" FromRole="ubicacionesDetalle" ToRole="ubicaciones" />
+  </EntityType>
+  <Association Name="FK_U_UD">
+    <End Role="ubicaciones" Type="Self.ubicaciones" Multiplicity="0..1" />
+    <End Role="ubicacionesDetalle" Type="Self.ubicacionesDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ubicaciones">
+        <PropertyRef Name="idubicacion" />
+      </Principal>
+      <Dependent Role="ubicacionesDetalle">
+        <PropertyRef Name="idubicacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="inv001Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ubicaciones" EntityType="Self.ubicaciones" />
+    <EntitySet Name="ubicacionesDetalle" EntityType="Self.ubicacionesDetalle" />
+    <AssociationSet Name="FK_U_UD" Association="Self.FK_U_UD">
+      <End Role="ubicaciones" EntitySet="ubicaciones" />
+      <End Role="ubicacionesDetalle" EntitySet="ubicacionesDetalle" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

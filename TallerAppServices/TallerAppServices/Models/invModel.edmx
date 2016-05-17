@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="inv001Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ubicaciones">
+          <Key>
+            <PropertyRef Name="idubicacion" />
+          </Key>
+          <Property Name="idubicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="desUbicacion" Type="varchar" MaxLength="20" />
+          <Property Name="codigo" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="ubicacionesDetalle">
+          <Key>
+            <PropertyRef Name="idUbicacionDetalle" />
+          </Key>
+          <Property Name="idUbicacionDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idubicacion" Type="int" />
+          <Property Name="desDetalle" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK_U_UD">
+          <End Role="ubicaciones" Type="Self.ubicaciones" Multiplicity="0..1" />
+          <End Role="ubicacionesDetalle" Type="Self.ubicacionesDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ubicaciones">
+              <PropertyRef Name="idubicacion" />
+            </Principal>
+            <Dependent Role="ubicacionesDetalle">
+              <PropertyRef Name="idubicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="inv001ModelStoreContainer">
+          <EntitySet Name="ubicaciones" EntityType="Self.ubicaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ubicacionesDetalle" EntityType="Self.ubicacionesDetalle" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_U_UD" Association="Self.FK_U_UD">
+            <End Role="ubicaciones" EntitySet="ubicaciones" />
+            <End Role="ubicacionesDetalle" EntitySet="ubicacionesDetalle" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="inv001Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ubicaciones">
+          <Key>
+            <PropertyRef Name="idubicacion" />
+          </Key>
+          <Property Name="idubicacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="desUbicacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ubicacionesDetalle" Relationship="Self.FK_U_UD" FromRole="ubicaciones" ToRole="ubicacionesDetalle" />
+        </EntityType>
+        <EntityType Name="ubicacionesDetalle">
+          <Key>
+            <PropertyRef Name="idUbicacionDetalle" />
+          </Key>
+          <Property Name="idUbicacionDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idubicacion" Type="Int32" />
+          <Property Name="desDetalle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ubicaciones" Relationship="Self.FK_U_UD" FromRole="ubicacionesDetalle" ToRole="ubicaciones" />
+        </EntityType>
+        <Association Name="FK_U_UD">
+          <End Role="ubicaciones" Type="Self.ubicaciones" Multiplicity="0..1" />
+          <End Role="ubicacionesDetalle" Type="Self.ubicacionesDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ubicaciones">
+              <PropertyRef Name="idubicacion" />
+            </Principal>
+            <Dependent Role="ubicacionesDetalle">
+              <PropertyRef Name="idubicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="inv001Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ubicaciones" EntityType="Self.ubicaciones" />
+          <EntitySet Name="ubicacionesDetalle" EntityType="Self.ubicacionesDetalle" />
+          <AssociationSet Name="FK_U_UD" Association="Self.FK_U_UD">
+            <End Role="ubicaciones" EntitySet="ubicaciones" />
+            <End Role="ubicacionesDetalle" EntitySet="ubicacionesDetalle" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="inv001ModelStoreContainer" CdmEntityContainer="inv001Entities">
+          <EntitySetMapping Name="ubicaciones">
+            <EntityTypeMapping TypeName="inv001Model.ubicaciones">
+              <MappingFragment StoreEntitySet="ubicaciones">
+                <ScalarProperty Name="idubicacion" ColumnName="idubicacion" />
+                <ScalarProperty Name="desUbicacion" ColumnName="desUbicacion" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ubicacionesDetalle">
+            <EntityTypeMapping TypeName="inv001Model.ubicacionesDetalle">
+              <MappingFragment StoreEntitySet="ubicacionesDetalle">
+                <ScalarProperty Name="idUbicacionDetalle" ColumnName="idUbicacionDetalle" />
+                <ScalarProperty Name="idubicacion" ColumnName="idubicacion" />
+                <ScalarProperty Name="desDetalle" ColumnName="desDetalle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

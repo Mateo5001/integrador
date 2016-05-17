@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="inv001ModelStoreContainer" CdmEntityContainer="inv001Entities">
+    <EntitySetMapping Name="ubicaciones">
+      <EntityTypeMapping TypeName="inv001Model.ubicaciones">
+        <MappingFragment StoreEntitySet="ubicaciones">
+          <ScalarProperty Name="idubicacion" ColumnName="idubicacion" />
+          <ScalarProperty Name="desUbicacion" ColumnName="desUbicacion" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ubicacionesDetalle">
+      <EntityTypeMapping TypeName="inv001Model.ubicacionesDetalle">
+        <MappingFragment StoreEntitySet="ubicacionesDetalle">
+          <ScalarProperty Name="idUbicacionDetalle" ColumnName="idUbicacionDetalle" />
+          <ScalarProperty Name="idubicacion" ColumnName="idubicacion" />
+          <ScalarProperty Name="desDetalle" ColumnName="desDetalle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
