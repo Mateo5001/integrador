@@ -10,112 +10,116 @@ using TallerAppServices.Models;
 
 namespace TallerAppServices.Controllers
 {
-    public class ubicacionesDetallesController : Controller
+    public class usuariosController : Controller
     {
         private inv001Entities db = new inv001Entities();
 
-        // GET: ubicacionesDetalles
+        // GET: usuarios
         public ActionResult Index()
         {
-            var ubicacionesDetalle = db.ubicacionesDetalle.Include(u => u.ubicaciones);
-            return View(ubicacionesDetalle.ToList());
+            var usuarios = db.usuarios.Include(u => u.roles).Include(u => u.tiposDocumentos);
+            return View(usuarios.ToList());
         }
 
-        // GET: ubicacionesDetalles/Details/5
+        // GET: usuarios/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ubicacionesDetalle ubicacionesDetalle = db.ubicacionesDetalle.Find(id);
-            if (ubicacionesDetalle == null)
+            usuarios usuarios = db.usuarios.Find(id);
+            if (usuarios == null)
             {
                 return HttpNotFound();
             }
-            return View(ubicacionesDetalle);
+            return View(usuarios);
         }
 
-        // GET: ubicacionesDetalles/Create
+        // GET: usuarios/Create
         public ActionResult Create()
         {
-            ViewBag.idubicacion = new SelectList(db.ubicaciones, "idubicacion", "desUbicacion");
+            ViewBag.idRole = new SelectList(db.roles, "idRole", "nombreRole");
+            ViewBag.idTipoDocumento = new SelectList(db.tiposDocumentos, "idTipoDocumento", "codigoTipoDocumento");
             return View();
         }
 
-        // POST: ubicacionesDetalles/Create
+        // POST: usuarios/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idUbicacionDetalle,idubicacion,desDetalle")] ubicacionesDetalle ubicacionesDetalle)
+        public ActionResult Create([Bind(Include = "idUsuario,idTipoDocumento,identificacion,nombrePrimero,nombreSegundo,apellidoPrimero,apellidoSegundo,idRole")] usuarios usuarios)
         {
             if (ModelState.IsValid)
             {
-                db.ubicacionesDetalle.Add(ubicacionesDetalle);
+                db.usuarios.Add(usuarios);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.idubicacion = new SelectList(db.ubicaciones, "idubicacion", "desUbicacion", ubicacionesDetalle.idubicacion);
-            return View(ubicacionesDetalle);
+            ViewBag.idRole = new SelectList(db.roles, "idRole", "nombreRole", usuarios.idRole);
+            ViewBag.idTipoDocumento = new SelectList(db.tiposDocumentos, "idTipoDocumento", "codigoTipoDocumento", usuarios.idTipoDocumento);
+            return View(usuarios);
         }
 
-        // GET: ubicacionesDetalles/Edit/5
+        // GET: usuarios/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ubicacionesDetalle ubicacionesDetalle = db.ubicacionesDetalle.Find(id);
-            if (ubicacionesDetalle == null)
+            usuarios usuarios = db.usuarios.Find(id);
+            if (usuarios == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.idubicacion = new SelectList(db.ubicaciones, "idubicacion", "desUbicacion", ubicacionesDetalle.idubicacion);
-            return View(ubicacionesDetalle);
+            ViewBag.idRole = new SelectList(db.roles, "idRole", "nombreRole", usuarios.idRole);
+            ViewBag.idTipoDocumento = new SelectList(db.tiposDocumentos, "idTipoDocumento", "codigoTipoDocumento", usuarios.idTipoDocumento);
+            return View(usuarios);
         }
 
-        // POST: ubicacionesDetalles/Edit/5
+        // POST: usuarios/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idUbicacionDetalle,idubicacion,desDetalle")] ubicacionesDetalle ubicacionesDetalle)
+        public ActionResult Edit([Bind(Include = "idUsuario,idTipoDocumento,identificacion,nombrePrimero,nombreSegundo,apellidoPrimero,apellidoSegundo,idRole")] usuarios usuarios)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(ubicacionesDetalle).State = EntityState.Modified;
+                db.Entry(usuarios).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.idubicacion = new SelectList(db.ubicaciones, "idubicacion", "desUbicacion", ubicacionesDetalle.idubicacion);
-            return View(ubicacionesDetalle);
+            ViewBag.idRole = new SelectList(db.roles, "idRole", "nombreRole", usuarios.idRole);
+            ViewBag.idTipoDocumento = new SelectList(db.tiposDocumentos, "idTipoDocumento", "codigoTipoDocumento", usuarios.idTipoDocumento);
+            return View(usuarios);
         }
 
-        // GET: ubicacionesDetalles/Delete/5
+        // GET: usuarios/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ubicacionesDetalle ubicacionesDetalle = db.ubicacionesDetalle.Find(id);
-            if (ubicacionesDetalle == null)
+            usuarios usuarios = db.usuarios.Find(id);
+            if (usuarios == null)
             {
                 return HttpNotFound();
             }
-            return View(ubicacionesDetalle);
+            return View(usuarios);
         }
 
-        // POST: ubicacionesDetalles/Delete/5
+        // POST: usuarios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ubicacionesDetalle ubicacionesDetalle = db.ubicacionesDetalle.Find(id);
-            db.ubicacionesDetalle.Remove(ubicacionesDetalle);
+            usuarios usuarios = db.usuarios.Find(id);
+            db.usuarios.Remove(usuarios);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -7,110 +7,111 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TallerAppServices.Models;
+using System.Web;
 
 namespace TallerAppServices.Controllers
 {
-    public class ubicacionesController : Controller
+    public class rolesController : Controller
     {
         private inv001Entities db = new inv001Entities();
 
-        // GET: ubicaciones
+        // GET: roles
         public ActionResult Index()
         {
-            return View(db.ubicaciones.ToList());
+            return View(db.roles.ToList());
         }
 
-        // GET: ubicaciones/Details/5
+        // GET: roles/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ubicaciones ubicaciones = db.ubicaciones.Find(id);
-            if (ubicaciones == null)
+            roles roles = db.roles.Find(id);
+            if (roles == null)
             {
                 return HttpNotFound();
             }
-            return View(ubicaciones);
+            return View(roles);
         }
 
-        // GET: ubicaciones/Create
+        // GET: roles/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: ubicaciones/Create
+        // POST: roles/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idubicacion,desUbicacion,codigo")] ubicaciones ubicaciones)
+        public ActionResult Create([Bind(Include = "idRole,nombreRole,codigoRole")] roles roles)
         {
             if (ModelState.IsValid)
             {
-                db.ubicaciones.Add(ubicaciones);
+                db.roles.Add(roles);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(ubicaciones);
+            return View(roles);
         }
 
-        // GET: ubicaciones/Edit/5
+        // GET: roles/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ubicaciones ubicaciones = db.ubicaciones.Find(id);
-            if (ubicaciones == null)
+            roles roles = db.roles.Find(id);
+            if (roles == null)
             {
                 return HttpNotFound();
             }
-            return View(ubicaciones);
+            return View(roles);
         }
 
-        // POST: ubicaciones/Edit/5
+        // POST: roles/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idubicacion,desUbicacion,codigo")] ubicaciones ubicaciones)
+        public ActionResult Edit([Bind(Include = "idRole,nombreRole,codigoRole")] roles roles)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(ubicaciones).State = EntityState.Modified;
+                db.Entry(roles).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(ubicaciones);
+            return View(roles);
         }
 
-        // GET: ubicaciones/Delete/5
+        // GET: roles/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ubicaciones ubicaciones = db.ubicaciones.Find(id);
-            if (ubicaciones == null)
+            roles roles = db.roles.Find(id);
+            if (roles == null)
             {
                 return HttpNotFound();
             }
-            return View(ubicaciones);
+            return View(roles);
         }
 
-        // POST: ubicaciones/Delete/5
+        // POST: roles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ubicaciones ubicaciones = db.ubicaciones.Find(id);
-            db.ubicaciones.Remove(ubicaciones);
+            roles roles = db.roles.Find(id);
+            db.roles.Remove(roles);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

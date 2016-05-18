@@ -1,21 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="inv001ModelStoreContainer" CdmEntityContainer="inv001Entities">
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="inv001Model.roles">
+        <MappingFragment StoreEntitySet="roles">
+          <ScalarProperty Name="codigoRole" ColumnName="codigoRole" />
+          <ScalarProperty Name="nombreRole" ColumnName="nombreRole" />
+          <ScalarProperty Name="idRole" ColumnName="idRole" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tiposDocumentos">
+      <EntityTypeMapping TypeName="inv001Model.tiposDocumentos">
+        <MappingFragment StoreEntitySet="tiposDocumentos">
+          <ScalarProperty Name="nombreTipoDocuemnto" ColumnName="nombreTipoDocuemnto" />
+          <ScalarProperty Name="codigoTipoDocumento" ColumnName="codigoTipoDocumento" />
+          <ScalarProperty Name="idTipoDocumento" ColumnName="idTipoDocumento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuarios">
+      <EntityTypeMapping TypeName="inv001Model.usuarios">
+        <MappingFragment StoreEntitySet="usuarios">
+          <ScalarProperty Name="idRole" ColumnName="idRole" />
+          <ScalarProperty Name="apellidoSegundo" ColumnName="apellidoSegundo" />
+          <ScalarProperty Name="apellidoPrimero" ColumnName="apellidoPrimero" />
+          <ScalarProperty Name="nombreSegundo" ColumnName="nombreSegundo" />
+          <ScalarProperty Name="nombrePrimero" ColumnName="nombrePrimero" />
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+          <ScalarProperty Name="idTipoDocumento" ColumnName="idTipoDocumento" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="ubicaciones">
       <EntityTypeMapping TypeName="inv001Model.ubicaciones">
         <MappingFragment StoreEntitySet="ubicaciones">
-          <ScalarProperty Name="idubicacion" ColumnName="idubicacion" />
-          <ScalarProperty Name="desUbicacion" ColumnName="desUbicacion" />
           <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="desUbicacion" ColumnName="desUbicacion" />
+          <ScalarProperty Name="idubicacion" ColumnName="idubicacion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ubicacionesDetalle">
       <EntityTypeMapping TypeName="inv001Model.ubicacionesDetalle">
         <MappingFragment StoreEntitySet="ubicacionesDetalle">
-          <ScalarProperty Name="idUbicacionDetalle" ColumnName="idUbicacionDetalle" />
-          <ScalarProperty Name="idubicacion" ColumnName="idubicacion" />
           <ScalarProperty Name="desDetalle" ColumnName="desDetalle" />
+          <ScalarProperty Name="idubicacion" ColumnName="idubicacion" />
+          <ScalarProperty Name="idUbicacionDetalle" ColumnName="idUbicacionDetalle" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

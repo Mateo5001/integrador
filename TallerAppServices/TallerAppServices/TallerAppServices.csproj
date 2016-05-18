@@ -200,8 +200,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\ubicacionesController.cs" />
-    <Compile Include="Controllers\ubicacionesDetallesController.cs" />
+    <Compile Include="Controllers\rolesController.cs" />
+    <Compile Include="Controllers\tiposDocumentosController.cs" />
+    <Compile Include="Controllers\usuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -223,10 +224,19 @@
       <DependentUpon>invModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\roles.cs">
+      <DependentUpon>invModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tiposDocumentos.cs">
+      <DependentUpon>invModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ubicaciones.cs">
       <DependentUpon>invModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ubicacionesDetalle.cs">
+      <DependentUpon>invModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usuarios.cs">
       <DependentUpon>invModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -311,16 +321,21 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\ubicaciones\Create.cshtml" />
-    <Content Include="Views\ubicaciones\Delete.cshtml" />
-    <Content Include="Views\ubicaciones\Details.cshtml" />
-    <Content Include="Views\ubicaciones\Edit.cshtml" />
-    <Content Include="Views\ubicaciones\Index.cshtml" />
-    <Content Include="Views\ubicacionesDetalles\Create.cshtml" />
-    <Content Include="Views\ubicacionesDetalles\Delete.cshtml" />
-    <Content Include="Views\ubicacionesDetalles\Details.cshtml" />
-    <Content Include="Views\ubicacionesDetalles\Edit.cshtml" />
-    <Content Include="Views\ubicacionesDetalles\Index.cshtml" />
+    <Content Include="Views\usuarios\Create.cshtml" />
+    <Content Include="Views\usuarios\Delete.cshtml" />
+    <Content Include="Views\usuarios\Details.cshtml" />
+    <Content Include="Views\usuarios\Edit.cshtml" />
+    <Content Include="Views\usuarios\Index.cshtml" />
+    <Content Include="Views\tiposDocumentos\Create.cshtml" />
+    <Content Include="Views\tiposDocumentos\Delete.cshtml" />
+    <Content Include="Views\tiposDocumentos\Details.cshtml" />
+    <Content Include="Views\tiposDocumentos\Edit.cshtml" />
+    <Content Include="Views\tiposDocumentos\Index.cshtml" />
+    <Content Include="Views\roles\Create.cshtml" />
+    <Content Include="Views\roles\Delete.cshtml" />
+    <Content Include="Views\roles\Details.cshtml" />
+    <Content Include="Views\roles\Edit.cshtml" />
+    <Content Include="Views\roles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

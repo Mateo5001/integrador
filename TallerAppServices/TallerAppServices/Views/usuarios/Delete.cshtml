@@ -1,0 +1,80 @@
+﻿@model TallerAppServices.Models.usuarios
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>usuarios</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.identificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.identificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombrePrimero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombrePrimero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombreSegundo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreSegundo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apellidoPrimero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellidoPrimero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apellidoSegundo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellidoSegundo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.roles.nombreRole)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.roles.nombreRole)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tiposDocumentos.codigoTipoDocumento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tiposDocumentos.codigoTipoDocumento)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

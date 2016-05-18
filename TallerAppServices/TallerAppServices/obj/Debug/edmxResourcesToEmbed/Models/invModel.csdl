@@ -1,26 +1,102 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="inv001Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="inv001Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="roles" EntityType="inv001Model.roles" />
+    <EntitySet Name="tiposDocumentos" EntityType="inv001Model.tiposDocumentos" />
+    <EntitySet Name="usuarios" EntityType="inv001Model.usuarios" />
+    <AssociationSet Name="FK_usuarios_roles" Association="inv001Model.FK_usuarios_roles">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="usuarios" EntitySet="usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_usuarios_tiposDocumentos" Association="inv001Model.FK_usuarios_tiposDocumentos">
+      <End Role="tiposDocumentos" EntitySet="tiposDocumentos" />
+      <End Role="usuarios" EntitySet="usuarios" />
+    </AssociationSet>
+    <EntitySet Name="ubicaciones" EntityType="inv001Model.ubicaciones" />
+    <EntitySet Name="ubicacionesDetalle" EntityType="inv001Model.ubicacionesDetalle" />
+    <AssociationSet Name="FK_U_UD" Association="inv001Model.FK_U_UD">
+      <End Role="ubicaciones" EntitySet="ubicaciones" />
+      <End Role="ubicacionesDetalle" EntitySet="ubicacionesDetalle" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="idRole" />
+    </Key>
+    <Property Name="idRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreRole" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="codigoRole" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="usuarios" Relationship="inv001Model.FK_usuarios_roles" FromRole="roles" ToRole="usuarios" />
+  </EntityType>
+  <EntityType Name="tiposDocumentos">
+    <Key>
+      <PropertyRef Name="idTipoDocumento" />
+    </Key>
+    <Property Name="idTipoDocumento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="codigoTipoDocumento" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nombreTipoDocuemnto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="usuarios" Relationship="inv001Model.FK_usuarios_tiposDocumentos" FromRole="tiposDocumentos" ToRole="usuarios" />
+  </EntityType>
+  <EntityType Name="usuarios">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idTipoDocumento" Type="Int32" Nullable="false" />
+    <Property Name="identificacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nombrePrimero" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nombreSegundo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="apellidoPrimero" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="apellidoSegundo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="idRole" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="roles" Relationship="inv001Model.FK_usuarios_roles" FromRole="usuarios" ToRole="roles" />
+    <NavigationProperty Name="tiposDocumentos" Relationship="inv001Model.FK_usuarios_tiposDocumentos" FromRole="usuarios" ToRole="tiposDocumentos" />
+  </EntityType>
+  <Association Name="FK_usuarios_roles">
+    <End Type="inv001Model.roles" Role="roles" Multiplicity="1" />
+    <End Type="inv001Model.usuarios" Role="usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="idRole" />
+      </Principal>
+      <Dependent Role="usuarios">
+        <PropertyRef Name="idRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_usuarios_tiposDocumentos">
+    <End Type="inv001Model.tiposDocumentos" Role="tiposDocumentos" Multiplicity="1" />
+    <End Type="inv001Model.usuarios" Role="usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tiposDocumentos">
+        <PropertyRef Name="idTipoDocumento" />
+      </Principal>
+      <Dependent Role="usuarios">
+        <PropertyRef Name="idTipoDocumento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityType Name="ubicaciones">
     <Key>
       <PropertyRef Name="idubicacion" />
     </Key>
     <Property Name="idubicacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="desUbicacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="ubicacionesDetalle" Relationship="Self.FK_U_UD" FromRole="ubicaciones" ToRole="ubicacionesDetalle" />
+    <Property Name="desUbicacion" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="codigo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ubicacionesDetalle" Relationship="inv001Model.FK_U_UD" FromRole="ubicaciones" ToRole="ubicacionesDetalle" />
   </EntityType>
   <EntityType Name="ubicacionesDetalle">
     <Key>
       <PropertyRef Name="idUbicacionDetalle" />
     </Key>
     <Property Name="idUbicacionDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="idubicacion" Type="Int32" />
-    <Property Name="desDetalle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="ubicaciones" Relationship="Self.FK_U_UD" FromRole="ubicacionesDetalle" ToRole="ubicaciones" />
+    <Property Name="idubicacion" Type="Int32" Nullable="false" />
+    <Property Name="desDetalle" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ubicaciones" Relationship="inv001Model.FK_U_UD" FromRole="ubicacionesDetalle" ToRole="ubicaciones" />
   </EntityType>
   <Association Name="FK_U_UD">
-    <End Role="ubicaciones" Type="Self.ubicaciones" Multiplicity="0..1" />
-    <End Role="ubicacionesDetalle" Type="Self.ubicacionesDetalle" Multiplicity="*" />
+    <End Type="inv001Model.ubicaciones" Role="ubicaciones" Multiplicity="1" />
+    <End Type="inv001Model.ubicacionesDetalle" Role="ubicacionesDetalle" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ubicaciones">
         <PropertyRef Name="idubicacion" />
@@ -30,12 +106,4 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="inv001Entities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="ubicaciones" EntityType="Self.ubicaciones" />
-    <EntitySet Name="ubicacionesDetalle" EntityType="Self.ubicacionesDetalle" />
-    <AssociationSet Name="FK_U_UD" Association="Self.FK_U_UD">
-      <End Role="ubicaciones" EntitySet="ubicaciones" />
-      <End Role="ubicacionesDetalle" EntitySet="ubicacionesDetalle" />
-    </AssociationSet>
-  </EntityContainer>
 </Schema>

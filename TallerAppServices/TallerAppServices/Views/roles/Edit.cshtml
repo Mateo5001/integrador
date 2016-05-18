@@ -1,4 +1,4 @@
-﻿@model TallerAppServices.Models.ubicaciones
+﻿@model TallerAppServices.Models.roles
 
 @{
     ViewBag.Title = "Edit";
@@ -12,24 +12,24 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>ubicaciones</h4>
+        <h4>roles</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.idubicacion)
+        @Html.HiddenFor(model => model.idRole)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.desUbicacion, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.nombreRole, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.desUbicacion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.desUbicacion, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.nombreRole, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nombreRole, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.codigo, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.codigoRole, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.codigo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.codigo, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.codigoRole, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.codigoRole, "", new { @class = "text-danger" })
             </div>
         </div>
 

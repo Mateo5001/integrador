@@ -5,9 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="1f0b52895ec24d40ad03d306b704c7c1" Name="Diagram1">
-        <EntityTypeShape EntityType="inv001Model.ubicaciones" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="inv001Model.ubicacionesDetalle" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="inv001Model.FK_U_UD" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="inv001Model.roles" Width="1.5" PointX="0.75" PointY="5.5" />
+        <EntityTypeShape EntityType="inv001Model.tiposDocumentos" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="inv001Model.usuarios" Width="1.5" PointX="3" PointY="1" />
+        <AssociationConnector Association="inv001Model.FK_usuarios_roles" />
+        <AssociationConnector Association="inv001Model.FK_usuarios_tiposDocumentos" />
+        <EntityTypeShape EntityType="inv001Model.ubicaciones" Width="1.5" PointX="3.375" PointY="4.875" />
+        <EntityTypeShape EntityType="inv001Model.ubicacionesDetalle" Width="1.5" PointX="5.625" PointY="4.875" />
+        <AssociationConnector Association="inv001Model.FK_U_UD" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

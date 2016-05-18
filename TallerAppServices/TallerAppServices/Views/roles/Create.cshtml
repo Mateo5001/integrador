@@ -1,4 +1,4 @@
-﻿@model TallerAppServices.Models.ubicacionesDetalle
+﻿@model TallerAppServices.Models.roles
 
 @{
     ViewBag.Title = "Create";
@@ -12,22 +12,22 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>ubicacionesDetalle</h4>
+        <h4>roles</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.idubicacion, "idubicacion", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.nombreRole, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("idubicacion", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.idubicacion, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.nombreRole, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nombreRole, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.desDetalle, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.codigoRole, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.desDetalle, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.desDetalle, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.codigoRole, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.codigoRole, "", new { @class = "text-danger" })
             </div>
         </div>
 

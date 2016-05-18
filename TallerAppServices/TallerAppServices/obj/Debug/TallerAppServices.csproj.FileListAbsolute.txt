@@ -240,6 +240,5 @@ C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\b
 C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\obj\Debug\TallerAppServices.csprojResolveAssemblyReference.cache
 C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\obj\Debug\TallerAppServices.dll
 C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\obj\Debug\TallerAppServices.pdb

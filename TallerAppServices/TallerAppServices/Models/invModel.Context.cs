@@ -25,6 +25,9 @@ namespace TallerAppServices.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<roles> roles { get; set; }
+        public virtual DbSet<tiposDocumentos> tiposDocumentos { get; set; }
+        public virtual DbSet<usuarios> usuarios { get; set; }
         public virtual DbSet<ubicaciones> ubicaciones { get; set; }
         public virtual DbSet<ubicacionesDetalle> ubicacionesDetalle { get; set; }
     }

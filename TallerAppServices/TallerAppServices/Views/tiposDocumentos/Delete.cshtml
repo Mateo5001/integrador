@@ -1,4 +1,4 @@
-﻿@model TallerAppServices.Models.ubicacionesDetalle
+﻿@model TallerAppServices.Models.tiposDocumentos
 
 @{
     ViewBag.Title = "Delete";
@@ -8,23 +8,23 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>ubicacionesDetalle</h4>
+    <h4>tiposDocumentos</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.desDetalle)
+            @Html.DisplayNameFor(model => model.codigoTipoDocumento)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.desDetalle)
+            @Html.DisplayFor(model => model.codigoTipoDocumento)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ubicaciones.desUbicacion)
+            @Html.DisplayNameFor(model => model.nombreTipoDocuemnto)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ubicaciones.desUbicacion)
+            @Html.DisplayFor(model => model.nombreTipoDocuemnto)
         </dd>
 
     </dl>

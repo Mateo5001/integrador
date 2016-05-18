@@ -1,0 +1,34 @@
+﻿@model TallerAppServices.Models.tiposDocumentos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tiposDocumentos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.codigoTipoDocumento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codigoTipoDocumento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombreTipoDocuemnto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreTipoDocuemnto)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idTipoDocumento }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

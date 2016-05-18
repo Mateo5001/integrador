@@ -12,12 +12,18 @@ namespace TallerAppServices.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ubicacionesDetalle
+    public partial class usuarios
     {
-        public int idUbicacionDetalle { get; set; }
-        public int idubicacion { get; set; }
-        public string desDetalle { get; set; }
+        public int idUsuario { get; set; }
+        public int idTipoDocumento { get; set; }
+        public string identificacion { get; set; }
+        public string nombrePrimero { get; set; }
+        public string nombreSegundo { get; set; }
+        public string apellidoPrimero { get; set; }
+        public string apellidoSegundo { get; set; }
+        public int idRole { get; set; }
     
-        public virtual ubicaciones ubicaciones { get; set; }
+        public virtual roles roles { get; set; }
+        public virtual tiposDocumentos tiposDocumentos { get; set; }
     }
 }
