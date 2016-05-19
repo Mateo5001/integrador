@@ -1,23 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="inv001Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="inv001Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="idRole" />
+    </Key>
+    <Property Name="idRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreRole" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="codigoRole" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tiposDocumentos">
+    <Key>
+      <PropertyRef Name="idTipoDocumento" />
+    </Key>
+    <Property Name="idTipoDocumento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="codigoTipoDocumento" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="nombreTipoDocuemnto" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="ubicaciones">
     <Key>
       <PropertyRef Name="idubicacion" />
     </Key>
     <Property Name="idubicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="desUbicacion" Type="varchar" MaxLength="20" />
-    <Property Name="codigo" Type="varchar" MaxLength="20" />
+    <Property Name="desUbicacion" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="codigo" Type="varchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <EntityType Name="ubicacionesDetalle">
     <Key>
       <PropertyRef Name="idUbicacionDetalle" />
     </Key>
     <Property Name="idUbicacionDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="idubicacion" Type="int" />
-    <Property Name="desDetalle" Type="varchar" MaxLength="20" />
+    <Property Name="idubicacion" Type="int" Nullable="false" />
+    <Property Name="desDetalle" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="usuarios">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idTipoDocumento" Type="int" Nullable="false" />
+    <Property Name="identificacion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="nombrePrimero" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="nombreSegundo" Type="varchar" MaxLength="50" />
+    <Property Name="apellidoPrimero" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="apellidoSegundo" Type="varchar" MaxLength="50" />
+    <Property Name="idRole" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_U_UD">
-    <End Role="ubicaciones" Type="Self.ubicaciones" Multiplicity="0..1" />
+    <End Role="ubicaciones" Type="Self.ubicaciones" Multiplicity="1" />
     <End Role="ubicacionesDetalle" Type="Self.ubicacionesDetalle" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ubicaciones">
@@ -28,12 +57,47 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_usuarios_roles">
+    <End Role="roles" Type="Self.roles" Multiplicity="1" />
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="idRole" />
+      </Principal>
+      <Dependent Role="usuarios">
+        <PropertyRef Name="idRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_usuarios_tiposDocumentos">
+    <End Role="tiposDocumentos" Type="Self.tiposDocumentos" Multiplicity="1" />
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tiposDocumentos">
+        <PropertyRef Name="idTipoDocumento" />
+      </Principal>
+      <Dependent Role="usuarios">
+        <PropertyRef Name="idTipoDocumento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="inv001ModelStoreContainer">
+    <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tiposDocumentos" EntityType="Self.tiposDocumentos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ubicaciones" EntityType="Self.ubicaciones" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ubicacionesDetalle" EntityType="Self.ubicacionesDetalle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_U_UD" Association="Self.FK_U_UD">
       <End Role="ubicaciones" EntitySet="ubicaciones" />
       <End Role="ubicacionesDetalle" EntitySet="ubicacionesDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_usuarios_roles" Association="Self.FK_usuarios_roles">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="usuarios" EntitySet="usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_usuarios_tiposDocumentos" Association="Self.FK_usuarios_tiposDocumentos">
+      <End Role="tiposDocumentos" EntitySet="tiposDocumentos" />
+      <End Role="usuarios" EntitySet="usuarios" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
