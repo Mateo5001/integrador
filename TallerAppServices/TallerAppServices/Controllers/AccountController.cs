@@ -17,6 +17,7 @@ namespace TallerAppServices.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private inv001Entities db = new inv001Entities();
 
         public AccountController()
         {
@@ -75,25 +76,37 @@ namespace TallerAppServices.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Usuario, model.Password,false,  shouldLockout: false);
+            var dato = (from users in db.cuentas
+                          where users.Usuario == model.Usuario && users.pass == model.Password
+                          select new cuentas
+                          {
+                              idCuenta=users.idCuenta,
+                              Usuario=users.Usuario,
+                              pass=users.pass,
+                              idusuario=users.idusuario,
+                             
+                          }).Take(1);
+
+           SignInStatus result;
+            if (dato == null)
+            {
+                result = SignInStatus.Failure;
+            }
+            else
+            {
+                System.Web.HttpContext.Current.Session["idUsuario"] = "1";
+                return RedirectToLocal("~/Home");
+            }
+
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
+                    return RedirectToLocal("~/Home");
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Datos de conexión erroneos");
                     return View(model);
             }
-        }
-        //
-        // GET: /Account/ResetPassword
-        [AllowAnonymous]
-        public ActionResult ResetPassword(string code)
-        {
-            return code == null ? View("Error") : View();
         }
 
         //
@@ -121,32 +134,7 @@ namespace TallerAppServices.Controllers
             AddErrors(result);
             return View();
         }
-
-        //
-        // GET: /Account/ResetPasswordConfirmation
-        [AllowAnonymous]
-        public ActionResult ResetPasswordConfirmation()
-        {
-            return View();
-        }
-
-       
-        // POST: /Account/LogOff
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult LogOff()
-        {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
-        }
-
-        //
-        // GET: /Account/ExternalLoginFailure
-        [AllowAnonymous]
-        public ActionResult ExternalLoginFailure()
-        {
-            return View();
-        }
+        
 
         protected override void Dispose(bool disposing)
         {

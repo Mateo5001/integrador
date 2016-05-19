@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1f0b52895ec24d40ad03d306b704c7c1" Name="Diagram1">
+      <Diagram DiagramId="1f0b52895ec24d40ad03d306b704c7c1" Name="Diagram1" ZoomLevel="55">
         <EntityTypeShape EntityType="inv001Model.roles" Width="1.5" PointX="0.75" PointY="5.5" />
         <EntityTypeShape EntityType="inv001Model.tiposDocumentos" Width="1.5" PointX="0.75" PointY="1.5" />
         <EntityTypeShape EntityType="inv001Model.usuarios" Width="1.5" PointX="3" PointY="1" />
@@ -13,6 +13,30 @@
         <EntityTypeShape EntityType="inv001Model.ubicaciones" Width="1.5" PointX="3.375" PointY="4.875" />
         <EntityTypeShape EntityType="inv001Model.ubicacionesDetalle" Width="1.5" PointX="5.625" PointY="4.875" />
         <AssociationConnector Association="inv001Model.FK_U_UD" />
+        <EntityTypeShape EntityType="inv001Model.colorDetalle" Width="1.5" PointX="7.5" PointY="16.875" />
+        <EntityTypeShape EntityType="inv001Model.colores" Width="1.5" PointX="5.25" PointY="14.5" />
+        <EntityTypeShape EntityType="inv001Model.cuentas" Width="1.5" PointX="5.25" PointY="8.5" />
+        <EntityTypeShape EntityType="inv001Model.inventarioMovimientosDetalle" Width="1.5" PointX="7.5" PointY="13" />
+        <EntityTypeShape EntityType="inv001Model.inventariosMovimientos" Width="1.5" PointX="5.25" PointY="11.125" />
+        <EntityTypeShape EntityType="inv001Model.lineas" Width="1.5" PointX="5.25" PointY="18.125" />
+        <EntityTypeShape EntityType="inv001Model.tintas" Width="1.5" PointX="10.5" PointY="9.125" />
+        <EntityTypeShape EntityType="inv001Model.ubicacionesDetalleLote" Width="1.5" PointX="7.875" PointY="7.625" />
+        <AssociationConnector Association="inv001Model.FK_colorDetalle_colores" />
+        <AssociationConnector Association="inv001Model.FK_colorDetalle_tintas" />
+        <AssociationConnector Association="inv001Model.FK_colores_usuarios" />
+        <AssociationConnector Association="inv001Model.FK_inventarioMovimientosDetalle_colores" />
+        <AssociationConnector Association="inv001Model.FK_ubicacionesDetalleLote_colores" />
+        <AssociationConnector Association="inv001Model.FK_cuentas_usuarios" />
+        <AssociationConnector Association="inv001Model.FK_inventarioMovimientosDetalle_inventariosMovimientos" />
+        <AssociationConnector Association="inv001Model.FK_inventarioMovimientosDetalle_tintas" />
+        <AssociationConnector Association="inv001Model.FK_inventariosMovimientos_usuarios" />
+        <AssociationConnector Association="inv001Model.FK_lineas_usuarios" />
+        <AssociationConnector Association="inv001Model.FK_tintas_lineas" />
+        <AssociationConnector Association="inv001Model.FK_tintas_usuarios" />
+        <AssociationConnector Association="inv001Model.FK_ubicacionesDetalleLote_tintas" />
+        <AssociationConnector Association="inv001Model.FK_ubicaciones_usuarios" />
+        <AssociationConnector Association="inv001Model.FK_ubicacionesDetalleLote_ubicacionesDetalle" />
+        <AssociationConnector Association="inv001Model.FK_ubicacionesDetalleLote_usuarios" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

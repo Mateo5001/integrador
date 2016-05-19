@@ -12,23 +12,23 @@ namespace TallerAppServices.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ubicaciones
+    public partial class inventariosMovimientos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ubicaciones()
+        public inventariosMovimientos()
         {
-            this.ubicacionesDetalle = new HashSet<ubicacionesDetalle>();
+            this.inventarioMovimientosDetalle = new HashSet<inventarioMovimientosDetalle>();
         }
     
-        public int idubicacion { get; set; }
-        public string desUbicacion { get; set; }
-        public string codigo { get; set; }
-        public int idUsuarioCreacion { get; set; }
-        public System.DateTime fechaCreacion { get; set; }
-        public bool inactivo { get; set; }
+        public int idMovimiento { get; set; }
+        public int idUsuarioregistra { get; set; }
+        public int numeroMovimiento { get; set; }
+        public int fechaMovimiento { get; set; }
+        public int signoMovimiento { get; set; }
+        public string descripcionMovimiento { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ubicacionesDetalle> ubicacionesDetalle { get; set; }
+        public virtual ICollection<inventarioMovimientosDetalle> inventarioMovimientosDetalle { get; set; }
         public virtual usuarios usuarios { get; set; }
     }
 }

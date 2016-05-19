@@ -207,7 +207,22 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\colorDetalle.cs">
+      <DependentUpon>invModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\colores.cs">
+      <DependentUpon>invModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cuentas.cs">
+      <DependentUpon>invModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\inventarioMovimientosDetalle.cs">
+      <DependentUpon>invModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\inventariosMovimientos.cs">
+      <DependentUpon>invModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\invModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -223,8 +238,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>invModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\lineas.cs">
+      <DependentUpon>invModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\roles.cs">
+      <DependentUpon>invModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tintas.cs">
       <DependentUpon>invModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tiposDocumentos.cs">
@@ -234,6 +255,9 @@
       <DependentUpon>invModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ubicacionesDetalle.cs">
+      <DependentUpon>invModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ubicacionesDetalleLote.cs">
       <DependentUpon>invModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\usuarios.cs">
@@ -311,7 +335,6 @@
     <Content Include="Views\Manage\ManageLogins.cshtml" />
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\usuarios\Create.cshtml" />
     <Content Include="Views\usuarios\Delete.cshtml" />

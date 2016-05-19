@@ -12,21 +12,28 @@ namespace TallerAppServices.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ubicacionesDetalle
+    public partial class colores
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ubicacionesDetalle()
+        public colores()
         {
+            this.colorDetalle = new HashSet<colorDetalle>();
+            this.inventarioMovimientosDetalle = new HashSet<inventarioMovimientosDetalle>();
             this.ubicacionesDetalleLote = new HashSet<ubicacionesDetalleLote>();
         }
     
-        public int idUbicacionDetalle { get; set; }
-        public int idubicacion { get; set; }
-        public string desDetalle { get; set; }
-        public bool contieneTintas { get; set; }
-        public bool contieneColores { get; set; }
+        public int idColor { get; set; }
+        public string nombreColor { get; set; }
+        public string codigoColor { get; set; }
+        public int idUsuarioRegistra { get; set; }
+        public System.DateTime fechaRegistro { get; set; }
+        public bool inactivo { get; set; }
     
-        public virtual ubicaciones ubicaciones { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<colorDetalle> colorDetalle { get; set; }
+        public virtual usuarios usuarios { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<inventarioMovimientosDetalle> inventarioMovimientosDetalle { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ubicacionesDetalleLote> ubicacionesDetalleLote { get; set; }
     }

@@ -14,6 +14,18 @@ namespace TallerAppServices.Models
     
     public partial class usuarios
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public usuarios()
+        {
+            this.colores = new HashSet<colores>();
+            this.cuentas = new HashSet<cuentas>();
+            this.inventariosMovimientos = new HashSet<inventariosMovimientos>();
+            this.lineas = new HashSet<lineas>();
+            this.tintas = new HashSet<tintas>();
+            this.ubicaciones = new HashSet<ubicaciones>();
+            this.ubicacionesDetalleLote = new HashSet<ubicacionesDetalleLote>();
+        }
+    
         public int idUsuario { get; set; }
         public int idTipoDocumento { get; set; }
         public string identificacion { get; set; }
@@ -25,5 +37,19 @@ namespace TallerAppServices.Models
     
         public virtual roles roles { get; set; }
         public virtual tiposDocumentos tiposDocumentos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<colores> colores { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<cuentas> cuentas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<inventariosMovimientos> inventariosMovimientos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<lineas> lineas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tintas> tintas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ubicaciones> ubicaciones { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ubicacionesDetalleLote> ubicacionesDetalleLote { get; set; }
     }
 }

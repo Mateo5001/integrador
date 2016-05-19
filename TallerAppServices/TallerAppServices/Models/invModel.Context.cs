@@ -30,5 +30,13 @@ namespace TallerAppServices.Models
         public virtual DbSet<usuarios> usuarios { get; set; }
         public virtual DbSet<ubicaciones> ubicaciones { get; set; }
         public virtual DbSet<ubicacionesDetalle> ubicacionesDetalle { get; set; }
+        public virtual DbSet<colorDetalle> colorDetalle { get; set; }
+        public virtual DbSet<colores> colores { get; set; }
+        public virtual DbSet<cuentas> cuentas { get; set; }
+        public virtual DbSet<inventarioMovimientosDetalle> inventarioMovimientosDetalle { get; set; }
+        public virtual DbSet<inventariosMovimientos> inventariosMovimientos { get; set; }
+        public virtual DbSet<lineas> lineas { get; set; }
+        public virtual DbSet<tintas> tintas { get; set; }
+        public virtual DbSet<ubicacionesDetalleLote> ubicacionesDetalleLote { get; set; }
     }
 }
