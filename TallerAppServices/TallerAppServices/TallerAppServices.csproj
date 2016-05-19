@@ -274,6 +274,7 @@
     <Content Include="Models\invModel.edmx.diagram">
       <DependentUpon>invModel.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\ColorSave.pubxml" />
     <None Include="Properties\PublishProfiles\WebAppPrueba0001.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
