@@ -9,6 +9,10 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using TallerAppServices.Models;
+using System.Data.Entity;
+using IntrLibrary.objects;
+using IntrLibrary.seguridad;
+
 
 namespace TallerAppServices.Controllers
 {
@@ -18,6 +22,7 @@ namespace TallerAppServices.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private inv001Entities db = new inv001Entities();
+        private CriptoUtil crip = new CriptoUtil();
 
         public AccountController()
         {
@@ -73,19 +78,20 @@ namespace TallerAppServices.Controllers
             {
                 return View(model);
             }
-
+            model.Password = crip.Encrit(model.Password);
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var dato = (from users in db.cuentas
-                          where users.Usuario == model.Usuario && users.pass == model.Password
-                          select new cuentas
-                          {
-                              idCuenta=users.idCuenta,
-                              Usuario=users.Usuario,
-                              pass=users.pass,
-                              idusuario=users.idusuario,
-                             
-                          }).Take(1);
+            Cuenta dato;
+            dato = (from users in db.cuentas
+                    where users.Usuario == model.Usuario && users.pass == model.Password
+                    select  new Cuenta
+                    {
+                        IdCuenta = users.idCuenta,
+                        IdUsuario = users.idusuario,
+                        Password = users.pass,
+                        CuentaNom = users.Usuario,
+
+                    }).DefaultIfEmpty().FirstOrDefault();//.Take(1).FirstOrDefault();
 
            SignInStatus result;
             if (dato == null)

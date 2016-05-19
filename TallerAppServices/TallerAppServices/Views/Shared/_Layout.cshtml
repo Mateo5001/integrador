@@ -13,7 +13,7 @@
 
 @{
     bool validaUser = System.Web.HttpContext.Current.Session["idUsuario"]==null ? true :false;
-    if (Request.Url.LocalPath != "/account/login")
+    if (Request.Url.LocalPath.ToLower() != "/account/login")
     {
         if (validaUser)
         {

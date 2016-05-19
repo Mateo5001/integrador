@@ -198,6 +198,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\cuentasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\rolesController.cs" />
@@ -323,7 +324,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\BienvenidoLogin.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
@@ -351,6 +351,11 @@
     <Content Include="Views\roles\Details.cshtml" />
     <Content Include="Views\roles\Edit.cshtml" />
     <Content Include="Views\roles\Index.cshtml" />
+    <Content Include="Views\cuentas\Create.cshtml" />
+    <Content Include="Views\cuentas\Delete.cshtml" />
+    <Content Include="Views\cuentas\Details.cshtml" />
+    <Content Include="Views\cuentas\Edit.cshtml" />
+    <Content Include="Views\cuentas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -365,6 +370,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IntrLibrary\IntrLibrary.csproj">
+      <Project>{e7479c14-96d6-433d-96d4-7bfbfe43207b}</Project>
+      <Name>IntrLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
