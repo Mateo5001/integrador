@@ -12,9 +12,10 @@
 <body>
 
 @{
-    if (Request.Url.LocalPath != "/account/login")
+    bool validaUser = System.Web.HttpContext.Current.Session["idUsuario"]==null ? true :false;
+    if (Request.Url.LocalPath.ToLower() != "/account/login")
     {
-        if (!Request.IsAuthenticated)
+        if (validaUser)
         {
             Response.Redirect("account/login");
         }
@@ -33,7 +34,9 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    @if (validaUser)
+                    {
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

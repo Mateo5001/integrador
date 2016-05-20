@@ -1,5 +1,65 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="inv001Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="inv001Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="colorDetalle">
+    <Key>
+      <PropertyRef Name="idColorDetalle" />
+    </Key>
+    <Property Name="idColorDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idColor" Type="int" Nullable="false" />
+    <Property Name="idTinta" Type="int" Nullable="false" />
+    <Property Name="cantidadPorcentaje" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="colores">
+    <Key>
+      <PropertyRef Name="idColor" />
+    </Key>
+    <Property Name="idColor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreColor" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="codigoColor" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="idUsuarioRegistra" Type="int" Nullable="false" />
+    <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="inactivo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cuentas">
+    <Key>
+      <PropertyRef Name="idCuenta" />
+    </Key>
+    <Property Name="idCuenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idusuario" Type="int" Nullable="false" />
+    <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="pass" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="inventarioMovimientosDetalle">
+    <Key>
+      <PropertyRef Name="idMovimientoDetalle" />
+    </Key>
+    <Property Name="idMovimientoDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idMovimiento" Type="int" Nullable="false" />
+    <Property Name="idTinta" Type="int" />
+    <Property Name="idColor" Type="int" />
+    <Property Name="Cantidad" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="inventariosMovimientos">
+    <Key>
+      <PropertyRef Name="idMovimiento" />
+    </Key>
+    <Property Name="idMovimiento" Type="int" Nullable="false" />
+    <Property Name="idUsuarioregistra" Type="int" Nullable="false" />
+    <Property Name="numeroMovimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fechaMovimiento" Type="int" Nullable="false" />
+    <Property Name="signoMovimiento" Type="int" Nullable="false" />
+    <Property Name="descripcionMovimiento" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="lineas">
+    <Key>
+      <PropertyRef Name="idLinea" />
+    </Key>
+    <Property Name="idLinea" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreLinea" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="codigoLinea" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="idUsuarioCreacion" Type="int" Nullable="false" />
+    <Property Name="fechaCreacion" Type="datetime" Nullable="false" />
+  </EntityType>
   <EntityType Name="roles">
     <Key>
       <PropertyRef Name="idRole" />
@@ -7,6 +67,18 @@
     <Property Name="idRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombreRole" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="codigoRole" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tintas">
+    <Key>
+      <PropertyRef Name="idTinta" />
+    </Key>
+    <Property Name="idTinta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreTinta" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="codigoTinta" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="idLinea" Type="int" Nullable="false" />
+    <Property Name="idUsuarioCreacion" Type="int" Nullable="false" />
+    <Property Name="fechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="inactivo" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="tiposDocumentos">
     <Key>
@@ -23,6 +95,9 @@
     <Property Name="idubicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="desUbicacion" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="codigo" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="idUsuarioCreacion" Type="int" Nullable="false" />
+    <Property Name="fechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="inactivo" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="ubicacionesDetalle">
     <Key>
@@ -31,6 +106,20 @@
     <Property Name="idUbicacionDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="idubicacion" Type="int" Nullable="false" />
     <Property Name="desDetalle" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="contieneTintas" Type="bit" Nullable="false" />
+    <Property Name="contieneColores" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ubicacionesDetalleLote">
+    <Key>
+      <PropertyRef Name="idLote" />
+    </Key>
+    <Property Name="idLote" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idTinta" Type="int" />
+    <Property Name="idColor" Type="int" />
+    <Property Name="cantidad" Type="float" Nullable="false" />
+    <Property Name="idUbicacionDetalle" Type="int" Nullable="false" />
+    <Property Name="codigoLote" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="idUsuarioCreacion" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="usuarios">
     <Key>
@@ -45,6 +134,138 @@
     <Property Name="apellidoSegundo" Type="varchar" MaxLength="50" />
     <Property Name="idRole" Type="int" Nullable="false" />
   </EntityType>
+  <Association Name="FK_colorDetalle_colores">
+    <End Role="colores" Type="Self.colores" Multiplicity="1" />
+    <End Role="colorDetalle" Type="Self.colorDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="colores">
+        <PropertyRef Name="idColor" />
+      </Principal>
+      <Dependent Role="colorDetalle">
+        <PropertyRef Name="idColor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_colorDetalle_tintas">
+    <End Role="tintas" Type="Self.tintas" Multiplicity="1" />
+    <End Role="colorDetalle" Type="Self.colorDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tintas">
+        <PropertyRef Name="idTinta" />
+      </Principal>
+      <Dependent Role="colorDetalle">
+        <PropertyRef Name="idTinta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_colores_usuarios">
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+    <End Role="colores" Type="Self.colores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="colores">
+        <PropertyRef Name="idUsuarioRegistra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cuentas_usuarios">
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+    <End Role="cuentas" Type="Self.cuentas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="cuentas">
+        <PropertyRef Name="idusuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_inventarioMovimientosDetalle_colores">
+    <End Role="colores" Type="Self.colores" Multiplicity="0..1" />
+    <End Role="inventarioMovimientosDetalle" Type="Self.inventarioMovimientosDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="colores">
+        <PropertyRef Name="idColor" />
+      </Principal>
+      <Dependent Role="inventarioMovimientosDetalle">
+        <PropertyRef Name="idColor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_inventarioMovimientosDetalle_inventariosMovimientos">
+    <End Role="inventariosMovimientos" Type="Self.inventariosMovimientos" Multiplicity="1" />
+    <End Role="inventarioMovimientosDetalle" Type="Self.inventarioMovimientosDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="inventariosMovimientos">
+        <PropertyRef Name="idMovimiento" />
+      </Principal>
+      <Dependent Role="inventarioMovimientosDetalle">
+        <PropertyRef Name="idMovimiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_inventarioMovimientosDetalle_tintas">
+    <End Role="tintas" Type="Self.tintas" Multiplicity="0..1" />
+    <End Role="inventarioMovimientosDetalle" Type="Self.inventarioMovimientosDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tintas">
+        <PropertyRef Name="idTinta" />
+      </Principal>
+      <Dependent Role="inventarioMovimientosDetalle">
+        <PropertyRef Name="idTinta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_inventariosMovimientos_usuarios">
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+    <End Role="inventariosMovimientos" Type="Self.inventariosMovimientos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="inventariosMovimientos">
+        <PropertyRef Name="idUsuarioregistra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_lineas_usuarios">
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+    <End Role="lineas" Type="Self.lineas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="lineas">
+        <PropertyRef Name="idUsuarioCreacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tintas_lineas">
+    <End Role="lineas" Type="Self.lineas" Multiplicity="1" />
+    <End Role="tintas" Type="Self.tintas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lineas">
+        <PropertyRef Name="idLinea" />
+      </Principal>
+      <Dependent Role="tintas">
+        <PropertyRef Name="idLinea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tintas_usuarios">
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+    <End Role="tintas" Type="Self.tintas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="tintas">
+        <PropertyRef Name="idUsuarioCreacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_U_UD">
     <End Role="ubicaciones" Type="Self.ubicaciones" Multiplicity="1" />
     <End Role="ubicacionesDetalle" Type="Self.ubicacionesDetalle" Multiplicity="*" />
@@ -54,6 +275,66 @@
       </Principal>
       <Dependent Role="ubicacionesDetalle">
         <PropertyRef Name="idubicacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ubicaciones_usuarios">
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+    <End Role="ubicaciones" Type="Self.ubicaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="ubicaciones">
+        <PropertyRef Name="idUsuarioCreacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ubicacionesDetalleLote_colores">
+    <End Role="colores" Type="Self.colores" Multiplicity="0..1" />
+    <End Role="ubicacionesDetalleLote" Type="Self.ubicacionesDetalleLote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="colores">
+        <PropertyRef Name="idColor" />
+      </Principal>
+      <Dependent Role="ubicacionesDetalleLote">
+        <PropertyRef Name="idColor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ubicacionesDetalleLote_tintas">
+    <End Role="tintas" Type="Self.tintas" Multiplicity="0..1" />
+    <End Role="ubicacionesDetalleLote" Type="Self.ubicacionesDetalleLote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tintas">
+        <PropertyRef Name="idTinta" />
+      </Principal>
+      <Dependent Role="ubicacionesDetalleLote">
+        <PropertyRef Name="idTinta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ubicacionesDetalleLote_ubicacionesDetalle">
+    <End Role="ubicacionesDetalle" Type="Self.ubicacionesDetalle" Multiplicity="1" />
+    <End Role="ubicacionesDetalleLote" Type="Self.ubicacionesDetalleLote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ubicacionesDetalle">
+        <PropertyRef Name="idUbicacionDetalle" />
+      </Principal>
+      <Dependent Role="ubicacionesDetalleLote">
+        <PropertyRef Name="idUbicacionDetalle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ubicacionesDetalleLote_usuarios">
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+    <End Role="ubicacionesDetalleLote" Type="Self.ubicacionesDetalleLote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="ubicacionesDetalleLote">
+        <PropertyRef Name="idUsuarioCreacion" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -82,14 +363,86 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="inv001ModelStoreContainer">
+    <EntitySet Name="colorDetalle" EntityType="Self.colorDetalle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="colores" EntityType="Self.colores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cuentas" EntityType="Self.cuentas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="inventarioMovimientosDetalle" EntityType="Self.inventarioMovimientosDetalle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="inventariosMovimientos" EntityType="Self.inventariosMovimientos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="lineas" EntityType="Self.lineas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tintas" EntityType="Self.tintas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tiposDocumentos" EntityType="Self.tiposDocumentos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ubicaciones" EntityType="Self.ubicaciones" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ubicacionesDetalle" EntityType="Self.ubicacionesDetalle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ubicacionesDetalleLote" EntityType="Self.ubicacionesDetalleLote" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_colorDetalle_colores" Association="Self.FK_colorDetalle_colores">
+      <End Role="colores" EntitySet="colores" />
+      <End Role="colorDetalle" EntitySet="colorDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_colorDetalle_tintas" Association="Self.FK_colorDetalle_tintas">
+      <End Role="tintas" EntitySet="tintas" />
+      <End Role="colorDetalle" EntitySet="colorDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_colores_usuarios" Association="Self.FK_colores_usuarios">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="colores" EntitySet="colores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cuentas_usuarios" Association="Self.FK_cuentas_usuarios">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="cuentas" EntitySet="cuentas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_inventarioMovimientosDetalle_colores" Association="Self.FK_inventarioMovimientosDetalle_colores">
+      <End Role="colores" EntitySet="colores" />
+      <End Role="inventarioMovimientosDetalle" EntitySet="inventarioMovimientosDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_inventarioMovimientosDetalle_inventariosMovimientos" Association="Self.FK_inventarioMovimientosDetalle_inventariosMovimientos">
+      <End Role="inventariosMovimientos" EntitySet="inventariosMovimientos" />
+      <End Role="inventarioMovimientosDetalle" EntitySet="inventarioMovimientosDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_inventarioMovimientosDetalle_tintas" Association="Self.FK_inventarioMovimientosDetalle_tintas">
+      <End Role="tintas" EntitySet="tintas" />
+      <End Role="inventarioMovimientosDetalle" EntitySet="inventarioMovimientosDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_inventariosMovimientos_usuarios" Association="Self.FK_inventariosMovimientos_usuarios">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="inventariosMovimientos" EntitySet="inventariosMovimientos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_lineas_usuarios" Association="Self.FK_lineas_usuarios">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="lineas" EntitySet="lineas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tintas_lineas" Association="Self.FK_tintas_lineas">
+      <End Role="lineas" EntitySet="lineas" />
+      <End Role="tintas" EntitySet="tintas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tintas_usuarios" Association="Self.FK_tintas_usuarios">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="tintas" EntitySet="tintas" />
+    </AssociationSet>
     <AssociationSet Name="FK_U_UD" Association="Self.FK_U_UD">
       <End Role="ubicaciones" EntitySet="ubicaciones" />
       <End Role="ubicacionesDetalle" EntitySet="ubicacionesDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ubicaciones_usuarios" Association="Self.FK_ubicaciones_usuarios">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="ubicaciones" EntitySet="ubicaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ubicacionesDetalleLote_colores" Association="Self.FK_ubicacionesDetalleLote_colores">
+      <End Role="colores" EntitySet="colores" />
+      <End Role="ubicacionesDetalleLote" EntitySet="ubicacionesDetalleLote" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ubicacionesDetalleLote_tintas" Association="Self.FK_ubicacionesDetalleLote_tintas">
+      <End Role="tintas" EntitySet="tintas" />
+      <End Role="ubicacionesDetalleLote" EntitySet="ubicacionesDetalleLote" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ubicacionesDetalleLote_ubicacionesDetalle" Association="Self.FK_ubicacionesDetalleLote_ubicacionesDetalle">
+      <End Role="ubicacionesDetalle" EntitySet="ubicacionesDetalle" />
+      <End Role="ubicacionesDetalleLote" EntitySet="ubicacionesDetalleLote" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ubicacionesDetalleLote_usuarios" Association="Self.FK_ubicacionesDetalleLote_usuarios">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="ubicacionesDetalleLote" EntitySet="ubicacionesDetalleLote" />
     </AssociationSet>
     <AssociationSet Name="FK_usuarios_roles" Association="Self.FK_usuarios_roles">
       <End Role="roles" EntitySet="roles" />

@@ -66,7 +66,16 @@ namespace TallerAppServices.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
+        //
+        //
+        // GET: /Account/Login
+        [AllowAnonymous]
+        public ActionResult logOut()
+        {
+            System.Web.HttpContext.Current.Session.RemoveAll();
+            return View("login");
 
+        }
         //
         // POST: /Account/Login
         [HttpPost]
@@ -100,7 +109,7 @@ namespace TallerAppServices.Controllers
             }
             else
             {
-                System.Web.HttpContext.Current.Session["idUsuario"] = "1";
+                System.Web.HttpContext.Current.Session["idUsuario"] = dato.IdUsuario;
                 return RedirectToLocal("~/Home");
             }
 

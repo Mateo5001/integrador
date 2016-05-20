@@ -5,7 +5,7 @@
 }
 
 <h2>@ViewBag.Title.</h2>
-<div class="row">
+<div class="row ">
     
     <div class="col-md-6">
         <section id="socialLoginForm">
@@ -21,24 +21,33 @@
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Usuario, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Usuario, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Usuario, "", new { @class = "text-danger" })
+
+                    <div class="row">
+                        @Html.LabelFor(m => m.Usuario, new { @class = "col-md-2 control-label" })
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.Usuario, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Usuario, "", new { @class = "text-danger" })
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    <div class="row">
+                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Iniciar Sesion" class="btn btn-default" />
-                    </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Iniciar Sesion" class="btn btn-default" />
                 </div>
+            </div>
 
             }
         </section>

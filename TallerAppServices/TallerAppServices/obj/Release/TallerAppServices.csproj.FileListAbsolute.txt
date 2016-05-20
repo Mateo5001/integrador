@@ -162,3 +162,5 @@ C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\b
 C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\obj\Release\TallerAppServices.csprojResolveAssemblyReference.cache
 C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\obj\Release\TallerAppServices.dll
 C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\obj\Release\TallerAppServices.pdb
+C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\bin\IntrLibrary.dll
+C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\bin\IntrLibrary.pdb

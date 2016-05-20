@@ -36,6 +36,9 @@
     <EntitySetMapping Name="ubicaciones">
       <EntityTypeMapping TypeName="inv001Model.ubicaciones">
         <MappingFragment StoreEntitySet="ubicaciones">
+          <ScalarProperty Name="inactivo" ColumnName="inactivo" />
+          <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+          <ScalarProperty Name="idUsuarioCreacion" ColumnName="idUsuarioCreacion" />
           <ScalarProperty Name="codigo" ColumnName="codigo" />
           <ScalarProperty Name="desUbicacion" ColumnName="desUbicacion" />
           <ScalarProperty Name="idubicacion" ColumnName="idubicacion" />
@@ -45,9 +48,103 @@
     <EntitySetMapping Name="ubicacionesDetalle">
       <EntityTypeMapping TypeName="inv001Model.ubicacionesDetalle">
         <MappingFragment StoreEntitySet="ubicacionesDetalle">
+          <ScalarProperty Name="contieneColores" ColumnName="contieneColores" />
+          <ScalarProperty Name="contieneTintas" ColumnName="contieneTintas" />
           <ScalarProperty Name="desDetalle" ColumnName="desDetalle" />
           <ScalarProperty Name="idubicacion" ColumnName="idubicacion" />
           <ScalarProperty Name="idUbicacionDetalle" ColumnName="idUbicacionDetalle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="colorDetalle">
+      <EntityTypeMapping TypeName="inv001Model.colorDetalle">
+        <MappingFragment StoreEntitySet="colorDetalle">
+          <ScalarProperty Name="cantidadPorcentaje" ColumnName="cantidadPorcentaje" />
+          <ScalarProperty Name="idTinta" ColumnName="idTinta" />
+          <ScalarProperty Name="idColor" ColumnName="idColor" />
+          <ScalarProperty Name="idColorDetalle" ColumnName="idColorDetalle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="colores">
+      <EntityTypeMapping TypeName="inv001Model.colores">
+        <MappingFragment StoreEntitySet="colores">
+          <ScalarProperty Name="inactivo" ColumnName="inactivo" />
+          <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+          <ScalarProperty Name="idUsuarioRegistra" ColumnName="idUsuarioRegistra" />
+          <ScalarProperty Name="codigoColor" ColumnName="codigoColor" />
+          <ScalarProperty Name="nombreColor" ColumnName="nombreColor" />
+          <ScalarProperty Name="idColor" ColumnName="idColor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cuentas">
+      <EntityTypeMapping TypeName="inv001Model.cuentas">
+        <MappingFragment StoreEntitySet="cuentas">
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+          <ScalarProperty Name="idCuenta" ColumnName="idCuenta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inventarioMovimientosDetalle">
+      <EntityTypeMapping TypeName="inv001Model.inventarioMovimientosDetalle">
+        <MappingFragment StoreEntitySet="inventarioMovimientosDetalle">
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="idColor" ColumnName="idColor" />
+          <ScalarProperty Name="idTinta" ColumnName="idTinta" />
+          <ScalarProperty Name="idMovimiento" ColumnName="idMovimiento" />
+          <ScalarProperty Name="idMovimientoDetalle" ColumnName="idMovimientoDetalle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inventariosMovimientos">
+      <EntityTypeMapping TypeName="inv001Model.inventariosMovimientos">
+        <MappingFragment StoreEntitySet="inventariosMovimientos">
+          <ScalarProperty Name="descripcionMovimiento" ColumnName="descripcionMovimiento" />
+          <ScalarProperty Name="signoMovimiento" ColumnName="signoMovimiento" />
+          <ScalarProperty Name="fechaMovimiento" ColumnName="fechaMovimiento" />
+          <ScalarProperty Name="numeroMovimiento" ColumnName="numeroMovimiento" />
+          <ScalarProperty Name="idUsuarioregistra" ColumnName="idUsuarioregistra" />
+          <ScalarProperty Name="idMovimiento" ColumnName="idMovimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lineas">
+      <EntityTypeMapping TypeName="inv001Model.lineas">
+        <MappingFragment StoreEntitySet="lineas">
+          <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+          <ScalarProperty Name="idUsuarioCreacion" ColumnName="idUsuarioCreacion" />
+          <ScalarProperty Name="codigoLinea" ColumnName="codigoLinea" />
+          <ScalarProperty Name="nombreLinea" ColumnName="nombreLinea" />
+          <ScalarProperty Name="idLinea" ColumnName="idLinea" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tintas">
+      <EntityTypeMapping TypeName="inv001Model.tintas">
+        <MappingFragment StoreEntitySet="tintas">
+          <ScalarProperty Name="inactivo" ColumnName="inactivo" />
+          <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+          <ScalarProperty Name="idUsuarioCreacion" ColumnName="idUsuarioCreacion" />
+          <ScalarProperty Name="idLinea" ColumnName="idLinea" />
+          <ScalarProperty Name="codigoTinta" ColumnName="codigoTinta" />
+          <ScalarProperty Name="nombreTinta" ColumnName="nombreTinta" />
+          <ScalarProperty Name="idTinta" ColumnName="idTinta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ubicacionesDetalleLote">
+      <EntityTypeMapping TypeName="inv001Model.ubicacionesDetalleLote">
+        <MappingFragment StoreEntitySet="ubicacionesDetalleLote">
+          <ScalarProperty Name="idUsuarioCreacion" ColumnName="idUsuarioCreacion" />
+          <ScalarProperty Name="codigoLote" ColumnName="codigoLote" />
+          <ScalarProperty Name="idUbicacionDetalle" ColumnName="idUbicacionDetalle" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="idColor" ColumnName="idColor" />
+          <ScalarProperty Name="idTinta" ColumnName="idTinta" />
+          <ScalarProperty Name="idLote" ColumnName="idLote" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
