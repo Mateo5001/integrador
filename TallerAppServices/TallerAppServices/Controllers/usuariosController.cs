@@ -40,7 +40,7 @@ namespace TallerAppServices.Controllers
         public ActionResult Create()
         {
             ViewBag.idRole = new SelectList(db.roles, "idRole", "nombreRole");
-            ViewBag.idTipoDocumento = new SelectList(db.tiposDocumentos, "idTipoDocumento", "codigoTipoDocumento");
+            ViewBag.idTipoDocumento = new SelectList(db.tiposDocumentos , "idTipoDocumento", "nombreTipoDocuemnto");
             return View();
         }
 

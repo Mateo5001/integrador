@@ -1,3 +1,3 @@
 ﻿function logOut() {
-    window.location.href="Account/logOut"
+    window.location.href='../Account/logOut'
 }

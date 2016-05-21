@@ -40,7 +40,8 @@ namespace TallerAppServices.Controllers
         // GET: cuentas/Create
         public ActionResult Create()
         {
-            ViewBag.idusuario = new SelectList(db.usuarios, "idUsuario", "identificacion");
+            var listaUsuarios = (from con in db.usuarios where !(from cuentas in db.cuentas select cuentas.idusuario).Contains(con.idUsuario) select con).DefaultIfEmpty();
+            ViewBag.idusuario = new SelectList(listaUsuarios, "idUsuario", "identificacion");
             return View();
         }
 
