@@ -7,7 +7,7 @@
     <title>@ViewBag.Title - ColorSave 2.0</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <script src="~/Scripts/_layoutJS/_layoutJS.js"></script>
 </head>
 <body>
 
@@ -29,30 +29,31 @@
 
                         @Html.ActionLink("ColorSave 2.0", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
 
-
-                        
-
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menuTop">
+                        <button type="button" class="btn navbar-static-top navbar-toggle pull-right" data-toggle="collapse" data-target="#menuTop">
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
+                        
                     </div>
                     <div id="menuTop" class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                        </ul>
-                    </div>
-                    @{
-                        if (!validaUser)
-                        {
-                            <div class="navbar-fixed-top">
+                            <ul class="nav navbar-nav">
+                                <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                            </ul>
+                        @{
+                            if (!validaUser)
+                            {
+                                //<div class="nav navbar-nav">
                                 <button type="button" class="btn navbar-btn pull-right" data-toggle="collapse" data-target="#session">
                                     <span>opciones</span>
                                 </button>
-                            </div>
+                                //</div>
+                            }
                         }
-                    }
+                            
+                    </div>
+                   
+                    
                 </div>
             </div>
             <div class="col">
@@ -63,8 +64,8 @@
                             {
 
                                 <div id="session" class="collapse">
-                                    <button type="button" class="btn navbar-btn" data-toggle="collapse" data-target="#session">
-                                        <span>@Html.ActionLink("cerrar session", "logOut", "Account")</span>
+                                    <button type="button" onclick="logOut()" id="btnCerrarSession" class="btn navbar-btn pull-right" data-toggle="collapse" data-target="#session">
+                                        <span class="glyphicon glyphicon-log-out"> Cerrar Session</span>
                                     </button>
                                 </div>
                             }
@@ -82,16 +83,23 @@
 
                     if (!validaUser)
                     {
-                    <div class="col-md-8 ">
+                    <div class="col-md-4">
                         @Html.Partial("menu")
                     </div>
+                    <div class="col-md-8 pull-right fade in active">
+                        @RenderBody()
+
+                    </div>
+                    }
+                    else
+                    {
+                        <div class="col-md-12">
+                            @RenderBody()
+                        </div>
                     }
                 }
 
-                <div class="col fade in active">
-                    @RenderBody()
-
-                </div>
+               
             </div>
                 <hr />
                 <footer>

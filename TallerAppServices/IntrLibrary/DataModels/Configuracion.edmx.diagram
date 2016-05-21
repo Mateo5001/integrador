@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="224483b17f194d468d24fe63f2b4e6ae" Name="Diagram1">
+        <EntityTypeShape EntityType="ConfiguracionDataModel.cuentas" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConfiguracionDataModel.lineas" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConfiguracionDataModel.menu" Width="1.5" PointX="5.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConfiguracionDataModel.menuRoles" Width="1.5" PointX="8" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConfiguracionDataModel.roles" Width="1.5" PointX="5.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConfiguracionDataModel.tintas" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConfiguracionDataModel.tiposDocumentos" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConfiguracionDataModel.ubicaciones" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConfiguracionDataModel.ubicacionesDetalle" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConfiguracionDataModel.ubicacionesDetalleLote" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="ConfiguracionDataModel.FK_tintas_lineas" ManuallyRouted="false" />
+        <AssociationConnector Association="ConfiguracionDataModel.FK_menuRoles_menu" ManuallyRouted="false" />
+        <AssociationConnector Association="ConfiguracionDataModel.FK_menuRoles_roles" ManuallyRouted="false" />
+        <AssociationConnector Association="ConfiguracionDataModel.FK_ubicacionesDetalleLote_tintas" ManuallyRouted="false" />
+        <AssociationConnector Association="ConfiguracionDataModel.FK_U_UD" ManuallyRouted="false" />
+        <AssociationConnector Association="ConfiguracionDataModel.FK_ubicacionesDetalleLote_ubicacionesDetalle" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

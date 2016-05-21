@@ -1,0 +1,568 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ConfiguracionDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cuentas">
+          <Key>
+            <PropertyRef Name="idCuenta" />
+          </Key>
+          <Property Name="idCuenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idusuario" Type="int" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="pass" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lineas">
+          <Key>
+            <PropertyRef Name="idLinea" />
+          </Key>
+          <Property Name="idLinea" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreLinea" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="codigoLinea" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idUsuarioCreacion" Type="int" Nullable="false" />
+          <Property Name="fechaCreacion" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="menu">
+          <Key>
+            <PropertyRef Name="idMenu" />
+          </Key>
+          <Property Name="idMenu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="controladora" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="metodo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="menuRoles">
+          <Key>
+            <PropertyRef Name="idMenuRole" />
+          </Key>
+          <Property Name="idMenuRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idRole" Type="int" Nullable="false" />
+          <Property Name="idMenu" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="roles">
+          <Key>
+            <PropertyRef Name="idRole" />
+          </Key>
+          <Property Name="idRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreRole" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="codigoRole" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tintas">
+          <Key>
+            <PropertyRef Name="idTinta" />
+          </Key>
+          <Property Name="idTinta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreTinta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="codigoTinta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idLinea" Type="int" Nullable="false" />
+          <Property Name="idUsuarioCreacion" Type="int" Nullable="false" />
+          <Property Name="fechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="inactivo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tiposDocumentos">
+          <Key>
+            <PropertyRef Name="idTipoDocumento" />
+          </Key>
+          <Property Name="idTipoDocumento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigoTipoDocumento" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombreTipoDocuemnto" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ubicaciones">
+          <Key>
+            <PropertyRef Name="idubicacion" />
+          </Key>
+          <Property Name="idubicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="desUbicacion" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="codigo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="idUsuarioCreacion" Type="int" Nullable="false" />
+          <Property Name="fechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="inactivo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ubicacionesDetalle">
+          <Key>
+            <PropertyRef Name="idUbicacionDetalle" />
+          </Key>
+          <Property Name="idUbicacionDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idubicacion" Type="int" Nullable="false" />
+          <Property Name="desDetalle" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="contieneTintas" Type="bit" Nullable="false" />
+          <Property Name="contieneColores" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ubicacionesDetalleLote">
+          <Key>
+            <PropertyRef Name="idLote" />
+          </Key>
+          <Property Name="idLote" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idTinta" Type="int" />
+          <Property Name="idColor" Type="int" />
+          <Property Name="cantidad" Type="float" Nullable="false" />
+          <Property Name="idUbicacionDetalle" Type="int" Nullable="false" />
+          <Property Name="codigoLote" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idUsuarioCreacion" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_menuRoles_menu">
+          <End Role="menu" Type="Self.menu" Multiplicity="1" />
+          <End Role="menuRoles" Type="Self.menuRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="menu">
+              <PropertyRef Name="idMenu" />
+            </Principal>
+            <Dependent Role="menuRoles">
+              <PropertyRef Name="idMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_menuRoles_roles">
+          <End Role="roles" Type="Self.roles" Multiplicity="1" />
+          <End Role="menuRoles" Type="Self.menuRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="idRole" />
+            </Principal>
+            <Dependent Role="menuRoles">
+              <PropertyRef Name="idRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tintas_lineas">
+          <End Role="lineas" Type="Self.lineas" Multiplicity="1" />
+          <End Role="tintas" Type="Self.tintas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lineas">
+              <PropertyRef Name="idLinea" />
+            </Principal>
+            <Dependent Role="tintas">
+              <PropertyRef Name="idLinea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_U_UD">
+          <End Role="ubicaciones" Type="Self.ubicaciones" Multiplicity="1" />
+          <End Role="ubicacionesDetalle" Type="Self.ubicacionesDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ubicaciones">
+              <PropertyRef Name="idubicacion" />
+            </Principal>
+            <Dependent Role="ubicacionesDetalle">
+              <PropertyRef Name="idubicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ubicacionesDetalleLote_tintas">
+          <End Role="tintas" Type="Self.tintas" Multiplicity="0..1" />
+          <End Role="ubicacionesDetalleLote" Type="Self.ubicacionesDetalleLote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tintas">
+              <PropertyRef Name="idTinta" />
+            </Principal>
+            <Dependent Role="ubicacionesDetalleLote">
+              <PropertyRef Name="idTinta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ubicacionesDetalleLote_ubicacionesDetalle">
+          <End Role="ubicacionesDetalle" Type="Self.ubicacionesDetalle" Multiplicity="1" />
+          <End Role="ubicacionesDetalleLote" Type="Self.ubicacionesDetalleLote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ubicacionesDetalle">
+              <PropertyRef Name="idUbicacionDetalle" />
+            </Principal>
+            <Dependent Role="ubicacionesDetalleLote">
+              <PropertyRef Name="idUbicacionDetalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ConfiguracionDataModelStoreContainer">
+          <EntitySet Name="cuentas" EntityType="Self.cuentas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lineas" EntityType="Self.lineas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="menu" EntityType="Self.menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="menuRoles" EntityType="Self.menuRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tintas" EntityType="Self.tintas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tiposDocumentos" EntityType="Self.tiposDocumentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ubicaciones" EntityType="Self.ubicaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ubicacionesDetalle" EntityType="Self.ubicacionesDetalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ubicacionesDetalleLote" EntityType="Self.ubicacionesDetalleLote" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_menuRoles_menu" Association="Self.FK_menuRoles_menu">
+            <End Role="menu" EntitySet="menu" />
+            <End Role="menuRoles" EntitySet="menuRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_menuRoles_roles" Association="Self.FK_menuRoles_roles">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="menuRoles" EntitySet="menuRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tintas_lineas" Association="Self.FK_tintas_lineas">
+            <End Role="lineas" EntitySet="lineas" />
+            <End Role="tintas" EntitySet="tintas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_U_UD" Association="Self.FK_U_UD">
+            <End Role="ubicaciones" EntitySet="ubicaciones" />
+            <End Role="ubicacionesDetalle" EntitySet="ubicacionesDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ubicacionesDetalleLote_tintas" Association="Self.FK_ubicacionesDetalleLote_tintas">
+            <End Role="tintas" EntitySet="tintas" />
+            <End Role="ubicacionesDetalleLote" EntitySet="ubicacionesDetalleLote" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ubicacionesDetalleLote_ubicacionesDetalle" Association="Self.FK_ubicacionesDetalleLote_ubicacionesDetalle">
+            <End Role="ubicacionesDetalle" EntitySet="ubicacionesDetalle" />
+            <End Role="ubicacionesDetalleLote" EntitySet="ubicacionesDetalleLote" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ConfiguracionDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="cuentas">
+          <Key>
+            <PropertyRef Name="idCuenta" />
+          </Key>
+          <Property Name="idCuenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idusuario" Type="Int32" Nullable="false" />
+          <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lineas">
+          <Key>
+            <PropertyRef Name="idLinea" />
+          </Key>
+          <Property Name="idLinea" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreLinea" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="codigoLinea" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idUsuarioCreacion" Type="Int32" Nullable="false" />
+          <Property Name="fechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tintas" Relationship="Self.FK_tintas_lineas" FromRole="lineas" ToRole="tintas" />
+        </EntityType>
+        <EntityType Name="menu">
+          <Key>
+            <PropertyRef Name="idMenu" />
+          </Key>
+          <Property Name="idMenu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="controladora" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="metodo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="menuRoles" Relationship="Self.FK_menuRoles_menu" FromRole="menu" ToRole="menuRoles" />
+        </EntityType>
+        <EntityType Name="menuRoles">
+          <Key>
+            <PropertyRef Name="idMenuRole" />
+          </Key>
+          <Property Name="idMenuRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idRole" Type="Int32" Nullable="false" />
+          <Property Name="idMenu" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="menu" Relationship="Self.FK_menuRoles_menu" FromRole="menuRoles" ToRole="menu" />
+          <NavigationProperty Name="roles" Relationship="Self.FK_menuRoles_roles" FromRole="menuRoles" ToRole="roles" />
+        </EntityType>
+        <EntityType Name="roles">
+          <Key>
+            <PropertyRef Name="idRole" />
+          </Key>
+          <Property Name="idRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreRole" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="codigoRole" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="menuRoles" Relationship="Self.FK_menuRoles_roles" FromRole="roles" ToRole="menuRoles" />
+        </EntityType>
+        <EntityType Name="tintas">
+          <Key>
+            <PropertyRef Name="idTinta" />
+          </Key>
+          <Property Name="idTinta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreTinta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="codigoTinta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idLinea" Type="Int32" Nullable="false" />
+          <Property Name="idUsuarioCreacion" Type="Int32" Nullable="false" />
+          <Property Name="fechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="inactivo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="lineas" Relationship="Self.FK_tintas_lineas" FromRole="tintas" ToRole="lineas" />
+          <NavigationProperty Name="ubicacionesDetalleLote" Relationship="Self.FK_ubicacionesDetalleLote_tintas" FromRole="tintas" ToRole="ubicacionesDetalleLote" />
+        </EntityType>
+        <EntityType Name="tiposDocumentos">
+          <Key>
+            <PropertyRef Name="idTipoDocumento" />
+          </Key>
+          <Property Name="idTipoDocumento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigoTipoDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombreTipoDocuemnto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ubicaciones">
+          <Key>
+            <PropertyRef Name="idubicacion" />
+          </Key>
+          <Property Name="idubicacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="desUbicacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idUsuarioCreacion" Type="Int32" Nullable="false" />
+          <Property Name="fechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="inactivo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ubicacionesDetalle" Relationship="Self.FK_U_UD" FromRole="ubicaciones" ToRole="ubicacionesDetalle" />
+        </EntityType>
+        <EntityType Name="ubicacionesDetalle">
+          <Key>
+            <PropertyRef Name="idUbicacionDetalle" />
+          </Key>
+          <Property Name="idUbicacionDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idubicacion" Type="Int32" Nullable="false" />
+          <Property Name="desDetalle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contieneTintas" Type="Boolean" Nullable="false" />
+          <Property Name="contieneColores" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ubicaciones" Relationship="Self.FK_U_UD" FromRole="ubicacionesDetalle" ToRole="ubicaciones" />
+          <NavigationProperty Name="ubicacionesDetalleLote" Relationship="Self.FK_ubicacionesDetalleLote_ubicacionesDetalle" FromRole="ubicacionesDetalle" ToRole="ubicacionesDetalleLote" />
+        </EntityType>
+        <EntityType Name="ubicacionesDetalleLote">
+          <Key>
+            <PropertyRef Name="idLote" />
+          </Key>
+          <Property Name="idLote" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idTinta" Type="Int32" />
+          <Property Name="idColor" Type="Int32" />
+          <Property Name="cantidad" Type="Double" Nullable="false" />
+          <Property Name="idUbicacionDetalle" Type="Int32" Nullable="false" />
+          <Property Name="codigoLote" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idUsuarioCreacion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tintas" Relationship="Self.FK_ubicacionesDetalleLote_tintas" FromRole="ubicacionesDetalleLote" ToRole="tintas" />
+          <NavigationProperty Name="ubicacionesDetalle" Relationship="Self.FK_ubicacionesDetalleLote_ubicacionesDetalle" FromRole="ubicacionesDetalleLote" ToRole="ubicacionesDetalle" />
+        </EntityType>
+        <Association Name="FK_tintas_lineas">
+          <End Role="lineas" Type="Self.lineas" Multiplicity="1" />
+          <End Role="tintas" Type="Self.tintas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lineas">
+              <PropertyRef Name="idLinea" />
+            </Principal>
+            <Dependent Role="tintas">
+              <PropertyRef Name="idLinea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_menuRoles_menu">
+          <End Role="menu" Type="Self.menu" Multiplicity="1" />
+          <End Role="menuRoles" Type="Self.menuRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="menu">
+              <PropertyRef Name="idMenu" />
+            </Principal>
+            <Dependent Role="menuRoles">
+              <PropertyRef Name="idMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_menuRoles_roles">
+          <End Role="roles" Type="Self.roles" Multiplicity="1" />
+          <End Role="menuRoles" Type="Self.menuRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="idRole" />
+            </Principal>
+            <Dependent Role="menuRoles">
+              <PropertyRef Name="idRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ubicacionesDetalleLote_tintas">
+          <End Role="tintas" Type="Self.tintas" Multiplicity="0..1" />
+          <End Role="ubicacionesDetalleLote" Type="Self.ubicacionesDetalleLote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tintas">
+              <PropertyRef Name="idTinta" />
+            </Principal>
+            <Dependent Role="ubicacionesDetalleLote">
+              <PropertyRef Name="idTinta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_U_UD">
+          <End Role="ubicaciones" Type="Self.ubicaciones" Multiplicity="1" />
+          <End Role="ubicacionesDetalle" Type="Self.ubicacionesDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ubicaciones">
+              <PropertyRef Name="idubicacion" />
+            </Principal>
+            <Dependent Role="ubicacionesDetalle">
+              <PropertyRef Name="idubicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ubicacionesDetalleLote_ubicacionesDetalle">
+          <End Role="ubicacionesDetalle" Type="Self.ubicacionesDetalle" Multiplicity="1" />
+          <End Role="ubicacionesDetalleLote" Type="Self.ubicacionesDetalleLote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ubicacionesDetalle">
+              <PropertyRef Name="idUbicacionDetalle" />
+            </Principal>
+            <Dependent Role="ubicacionesDetalleLote">
+              <PropertyRef Name="idUbicacionDetalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ConfiguracionEntity" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cuentas" EntityType="Self.cuentas" />
+          <EntitySet Name="lineas" EntityType="Self.lineas" />
+          <EntitySet Name="menu" EntityType="Self.menu" />
+          <EntitySet Name="menuRoles" EntityType="Self.menuRoles" />
+          <EntitySet Name="roles" EntityType="Self.roles" />
+          <EntitySet Name="tintas" EntityType="Self.tintas" />
+          <EntitySet Name="tiposDocumentos" EntityType="Self.tiposDocumentos" />
+          <EntitySet Name="ubicaciones" EntityType="Self.ubicaciones" />
+          <EntitySet Name="ubicacionesDetalle" EntityType="Self.ubicacionesDetalle" />
+          <EntitySet Name="ubicacionesDetalleLote" EntityType="Self.ubicacionesDetalleLote" />
+          <AssociationSet Name="FK_tintas_lineas" Association="Self.FK_tintas_lineas">
+            <End Role="lineas" EntitySet="lineas" />
+            <End Role="tintas" EntitySet="tintas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_menuRoles_menu" Association="Self.FK_menuRoles_menu">
+            <End Role="menu" EntitySet="menu" />
+            <End Role="menuRoles" EntitySet="menuRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_menuRoles_roles" Association="Self.FK_menuRoles_roles">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="menuRoles" EntitySet="menuRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ubicacionesDetalleLote_tintas" Association="Self.FK_ubicacionesDetalleLote_tintas">
+            <End Role="tintas" EntitySet="tintas" />
+            <End Role="ubicacionesDetalleLote" EntitySet="ubicacionesDetalleLote" />
+          </AssociationSet>
+          <AssociationSet Name="FK_U_UD" Association="Self.FK_U_UD">
+            <End Role="ubicaciones" EntitySet="ubicaciones" />
+            <End Role="ubicacionesDetalle" EntitySet="ubicacionesDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ubicacionesDetalleLote_ubicacionesDetalle" Association="Self.FK_ubicacionesDetalleLote_ubicacionesDetalle">
+            <End Role="ubicacionesDetalle" EntitySet="ubicacionesDetalle" />
+            <End Role="ubicacionesDetalleLote" EntitySet="ubicacionesDetalleLote" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ConfiguracionDataModelStoreContainer" CdmEntityContainer="ConfiguracionEntity">
+          <EntitySetMapping Name="cuentas">
+            <EntityTypeMapping TypeName="ConfiguracionDataModel.cuentas">
+              <MappingFragment StoreEntitySet="cuentas">
+                <ScalarProperty Name="idCuenta" ColumnName="idCuenta" />
+                <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lineas">
+            <EntityTypeMapping TypeName="ConfiguracionDataModel.lineas">
+              <MappingFragment StoreEntitySet="lineas">
+                <ScalarProperty Name="idLinea" ColumnName="idLinea" />
+                <ScalarProperty Name="nombreLinea" ColumnName="nombreLinea" />
+                <ScalarProperty Name="codigoLinea" ColumnName="codigoLinea" />
+                <ScalarProperty Name="idUsuarioCreacion" ColumnName="idUsuarioCreacion" />
+                <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="menu">
+            <EntityTypeMapping TypeName="ConfiguracionDataModel.menu">
+              <MappingFragment StoreEntitySet="menu">
+                <ScalarProperty Name="idMenu" ColumnName="idMenu" />
+                <ScalarProperty Name="controladora" ColumnName="controladora" />
+                <ScalarProperty Name="metodo" ColumnName="metodo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="menuRoles">
+            <EntityTypeMapping TypeName="ConfiguracionDataModel.menuRoles">
+              <MappingFragment StoreEntitySet="menuRoles">
+                <ScalarProperty Name="idMenuRole" ColumnName="idMenuRole" />
+                <ScalarProperty Name="idRole" ColumnName="idRole" />
+                <ScalarProperty Name="idMenu" ColumnName="idMenu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roles">
+            <EntityTypeMapping TypeName="ConfiguracionDataModel.roles">
+              <MappingFragment StoreEntitySet="roles">
+                <ScalarProperty Name="idRole" ColumnName="idRole" />
+                <ScalarProperty Name="nombreRole" ColumnName="nombreRole" />
+                <ScalarProperty Name="codigoRole" ColumnName="codigoRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tintas">
+            <EntityTypeMapping TypeName="ConfiguracionDataModel.tintas">
+              <MappingFragment StoreEntitySet="tintas">
+                <ScalarProperty Name="idTinta" ColumnName="idTinta" />
+                <ScalarProperty Name="nombreTinta" ColumnName="nombreTinta" />
+                <ScalarProperty Name="codigoTinta" ColumnName="codigoTinta" />
+                <ScalarProperty Name="idLinea" ColumnName="idLinea" />
+                <ScalarProperty Name="idUsuarioCreacion" ColumnName="idUsuarioCreacion" />
+                <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+                <ScalarProperty Name="inactivo" ColumnName="inactivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tiposDocumentos">
+            <EntityTypeMapping TypeName="ConfiguracionDataModel.tiposDocumentos">
+              <MappingFragment StoreEntitySet="tiposDocumentos">
+                <ScalarProperty Name="idTipoDocumento" ColumnName="idTipoDocumento" />
+                <ScalarProperty Name="codigoTipoDocumento" ColumnName="codigoTipoDocumento" />
+                <ScalarProperty Name="nombreTipoDocuemnto" ColumnName="nombreTipoDocuemnto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ubicaciones">
+            <EntityTypeMapping TypeName="ConfiguracionDataModel.ubicaciones">
+              <MappingFragment StoreEntitySet="ubicaciones">
+                <ScalarProperty Name="idubicacion" ColumnName="idubicacion" />
+                <ScalarProperty Name="desUbicacion" ColumnName="desUbicacion" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="idUsuarioCreacion" ColumnName="idUsuarioCreacion" />
+                <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+                <ScalarProperty Name="inactivo" ColumnName="inactivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ubicacionesDetalle">
+            <EntityTypeMapping TypeName="ConfiguracionDataModel.ubicacionesDetalle">
+              <MappingFragment StoreEntitySet="ubicacionesDetalle">
+                <ScalarProperty Name="idUbicacionDetalle" ColumnName="idUbicacionDetalle" />
+                <ScalarProperty Name="idubicacion" ColumnName="idubicacion" />
+                <ScalarProperty Name="desDetalle" ColumnName="desDetalle" />
+                <ScalarProperty Name="contieneTintas" ColumnName="contieneTintas" />
+                <ScalarProperty Name="contieneColores" ColumnName="contieneColores" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ubicacionesDetalleLote">
+            <EntityTypeMapping TypeName="ConfiguracionDataModel.ubicacionesDetalleLote">
+              <MappingFragment StoreEntitySet="ubicacionesDetalleLote">
+                <ScalarProperty Name="idLote" ColumnName="idLote" />
+                <ScalarProperty Name="idTinta" ColumnName="idTinta" />
+                <ScalarProperty Name="idColor" ColumnName="idColor" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="idUbicacionDetalle" ColumnName="idUbicacionDetalle" />
+                <ScalarProperty Name="codigoLote" ColumnName="codigoLote" />
+                <ScalarProperty Name="idUsuarioCreacion" ColumnName="idUsuarioCreacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
