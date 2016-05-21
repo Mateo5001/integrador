@@ -7,50 +7,106 @@
     <title>@ViewBag.Title - ColorSave 2.0</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <script src="~/Scripts/_layoutJS/_layoutJS.js"></script>
 </head>
 <body>
 
 @{
-    bool validaUser = System.Web.HttpContext.Current.Session["idUsuario"]==null ? true :false;
-    if (Request.Url.LocalPath.ToLower() != "/account/login")
+    bool validaUser = System.Web.HttpContext.Current.Session["idUsuario"] == null ? true : false;
+    if (Request.Url.LocalPath != "/Account/login")
     {
         if (validaUser)
         {
-            Response.Redirect("account/login");
+            Response.Redirect("~/Account/login");
         }
     }
 }
     <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("ColorSave 2.0", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        <div class="row">
+            <div class="col">
+                <div class="container">
+                    <div class="navbar-header">
+
+                        @Html.ActionLink("ColorSave 2.0", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+                        <button type="button" class="btn navbar-static-top navbar-toggle pull-right" data-toggle="collapse" data-target="#menuTop">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        
+                    </div>
+                    <div id="menuTop" class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                            </ul>
+                        @{
+                            if (!validaUser)
+                            {
+                                //<div class="nav navbar-nav">
+                                <button type="button" class="btn navbar-btn pull-right" data-toggle="collapse" data-target="#session">
+                                    <span>opciones</span>
+                                </button>
+                                //</div>
+                            }
+                        }
+                            
+                    </div>
+                   
+                    
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    @if (validaUser)
-                    {
-                    }
-                </ul>
-                @Html.Partial("_LoginPartial")
+            <div class="col">
+                <div class="container">
+                    <div class="row">
+                        @{
+                            if (!validaUser)
+                            {
+
+                                <div id="session" class="collapse">
+                                    <button type="button" onclick="logOut()" id="btnCerrarSession" class="btn navbar-btn pull-right" data-toggle="collapse" data-target="#session">
+                                        <span class="glyphicon glyphicon-log-out"> Cerrar Session</span>
+                                    </button>
+                                </div>
+                            }
+
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="container body-content">
+        <div class="container body-content">
+            
+            <div class="row">
+                @{
 
-        @RenderBody()
-        
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - powered by Azure</p>
-        </footer>
-    </div>
+                    if (!validaUser)
+                    {
+                    <div class="col-md-4">
+                        @Html.Partial("menu")
+                    </div>
+                    <div class="col-md-8 pull-right fade in active">
+                        @RenderBody()
+
+                    </div>
+                    }
+                    else
+                    {
+                        <div class="col-md-12">
+                            @RenderBody()
+                        </div>
+                    }
+                }
+
+               
+            </div>
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - powered by Azure</p>
+                </footer>
+
+        </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
