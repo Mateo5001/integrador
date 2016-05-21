@@ -4,7 +4,16 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ConfiguracionDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ConfiguracionDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Controladoras">
+          <Key>
+            <PropertyRef Name="idControladora" />
+          </Key>
+          <Property Name="idControladora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Path" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NombreControladora" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcionControladora" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="cuentas">
           <Key>
             <PropertyRef Name="idCuenta" />
@@ -29,7 +38,7 @@
             <PropertyRef Name="idMenu" />
           </Key>
           <Property Name="idMenu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="controladora" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idControladora" Type="int" Nullable="false" />
           <Property Name="metodo" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="menuRoles">
@@ -39,6 +48,17 @@
           <Property Name="idMenuRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idRole" Type="int" Nullable="false" />
           <Property Name="idMenu" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MetodosControladora">
+          <Key>
+            <PropertyRef Name="idMetodo" />
+          </Key>
+          <Property Name="idMetodo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="metodo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcionMetodo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombreMostrar" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="vista" Type="varchar" MaxLength="50" />
+          <Property Name="idControladora" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="roles">
           <Key>
@@ -101,6 +121,18 @@
           <Property Name="codigoLote" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="idUsuarioCreacion" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_menu_Controladoras">
+          <End Role="Controladoras" Type="Self.Controladoras" Multiplicity="1" />
+          <End Role="menu" Type="Self.menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Controladoras">
+              <PropertyRef Name="idControladora" />
+            </Principal>
+            <Dependent Role="menu">
+              <PropertyRef Name="idControladora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_menuRoles_menu">
           <End Role="menu" Type="Self.menu" Multiplicity="1" />
           <End Role="menuRoles" Type="Self.menuRoles" Multiplicity="*" />
@@ -122,6 +154,18 @@
             </Principal>
             <Dependent Role="menuRoles">
               <PropertyRef Name="idRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MetodosControladora_Controladoras">
+          <End Role="Controladoras" Type="Self.Controladoras" Multiplicity="1" />
+          <End Role="MetodosControladora" Type="Self.MetodosControladora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Controladoras">
+              <PropertyRef Name="idControladora" />
+            </Principal>
+            <Dependent Role="MetodosControladora">
+              <PropertyRef Name="idControladora" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -174,16 +218,22 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ConfiguracionDataModelStoreContainer">
+          <EntitySet Name="Controladoras" EntityType="Self.Controladoras" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cuentas" EntityType="Self.cuentas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="lineas" EntityType="Self.lineas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="menu" EntityType="Self.menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="menuRoles" EntityType="Self.menuRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MetodosControladora" EntityType="Self.MetodosControladora" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tintas" EntityType="Self.tintas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tiposDocumentos" EntityType="Self.tiposDocumentos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ubicaciones" EntityType="Self.ubicaciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ubicacionesDetalle" EntityType="Self.ubicacionesDetalle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ubicacionesDetalleLote" EntityType="Self.ubicacionesDetalleLote" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_menu_Controladoras" Association="Self.FK_menu_Controladoras">
+            <End Role="Controladoras" EntitySet="Controladoras" />
+            <End Role="menu" EntitySet="menu" />
+          </AssociationSet>
           <AssociationSet Name="FK_menuRoles_menu" Association="Self.FK_menuRoles_menu">
             <End Role="menu" EntitySet="menu" />
             <End Role="menuRoles" EntitySet="menuRoles" />
@@ -191,6 +241,10 @@
           <AssociationSet Name="FK_menuRoles_roles" Association="Self.FK_menuRoles_roles">
             <End Role="roles" EntitySet="roles" />
             <End Role="menuRoles" EntitySet="menuRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MetodosControladora_Controladoras" Association="Self.FK_MetodosControladora_Controladoras">
+            <End Role="Controladoras" EntitySet="Controladoras" />
+            <End Role="MetodosControladora" EntitySet="MetodosControladora" />
           </AssociationSet>
           <AssociationSet Name="FK_tintas_lineas" Association="Self.FK_tintas_lineas">
             <End Role="lineas" EntitySet="lineas" />
@@ -209,8 +263,7 @@
             <End Role="ubicacionesDetalleLote" EntitySet="ubicacionesDetalleLote" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ConfiguracionDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -239,9 +292,10 @@
             <PropertyRef Name="idMenu" />
           </Key>
           <Property Name="idMenu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="controladora" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="metodo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="menuRoles" Relationship="Self.FK_menuRoles_menu" FromRole="menu" ToRole="menuRoles" />
+          <Property Name="idControladora" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Controladoras" Relationship="ConfiguracionDataModel.FK_menu_Controladoras" FromRole="menu" ToRole="Controladoras" />
         </EntityType>
         <EntityType Name="menuRoles">
           <Key>
@@ -429,7 +483,64 @@
             <End Role="ubicacionesDetalle" EntitySet="ubicacionesDetalle" />
             <End Role="ubicacionesDetalleLote" EntitySet="ubicacionesDetalleLote" />
           </AssociationSet>
+          <EntitySet Name="Controladoras" EntityType="ConfiguracionDataModel.Controladoras" />
+          <EntitySet Name="MetodosControladora" EntityType="ConfiguracionDataModel.MetodosControladora" />
+          <AssociationSet Name="FK_menu_Controladoras" Association="ConfiguracionDataModel.FK_menu_Controladoras">
+            <End Role="Controladoras" EntitySet="Controladoras" />
+            <End Role="menu" EntitySet="menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MetodosControladora_Controladoras" Association="ConfiguracionDataModel.FK_MetodosControladora_Controladoras">
+            <End Role="Controladoras" EntitySet="Controladoras" />
+            <End Role="MetodosControladora" EntitySet="MetodosControladora" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Controladoras">
+          <Key>
+            <PropertyRef Name="idControladora" />
+          </Key>
+          <Property Name="idControladora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Path" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NombreControladora" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descripcionControladora" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="menu" Relationship="ConfiguracionDataModel.FK_menu_Controladoras" FromRole="Controladoras" ToRole="menu" />
+          <NavigationProperty Name="MetodosControladora" Relationship="ConfiguracionDataModel.FK_MetodosControladora_Controladoras" FromRole="Controladoras" ToRole="MetodosControladora" />
+        </EntityType>
+        <EntityType Name="MetodosControladora">
+          <Key>
+            <PropertyRef Name="idMetodo" />
+          </Key>
+          <Property Name="idMetodo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="metodo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descripcionMetodo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nombreMostrar" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="vista" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idControladora" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Controladoras" Relationship="ConfiguracionDataModel.FK_MetodosControladora_Controladoras" FromRole="MetodosControladora" ToRole="Controladoras" />
+        </EntityType>
+        <Association Name="FK_menu_Controladoras">
+          <End Type="ConfiguracionDataModel.Controladoras" Role="Controladoras" Multiplicity="1" />
+          <End Type="ConfiguracionDataModel.menu" Role="menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Controladoras">
+              <PropertyRef Name="idControladora" />
+            </Principal>
+            <Dependent Role="menu">
+              <PropertyRef Name="idControladora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MetodosControladora_Controladoras">
+          <End Type="ConfiguracionDataModel.Controladoras" Role="Controladoras" Multiplicity="1" />
+          <End Type="ConfiguracionDataModel.MetodosControladora" Role="MetodosControladora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Controladoras">
+              <PropertyRef Name="idControladora" />
+            </Principal>
+            <Dependent Role="MetodosControladora">
+              <PropertyRef Name="idControladora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -460,8 +571,8 @@
           <EntitySetMapping Name="menu">
             <EntityTypeMapping TypeName="ConfiguracionDataModel.menu">
               <MappingFragment StoreEntitySet="menu">
+                <ScalarProperty Name="idControladora" ColumnName="idControladora" />
                 <ScalarProperty Name="idMenu" ColumnName="idMenu" />
-                <ScalarProperty Name="controladora" ColumnName="controladora" />
                 <ScalarProperty Name="metodo" ColumnName="metodo" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -539,6 +650,28 @@
                 <ScalarProperty Name="idUbicacionDetalle" ColumnName="idUbicacionDetalle" />
                 <ScalarProperty Name="codigoLote" ColumnName="codigoLote" />
                 <ScalarProperty Name="idUsuarioCreacion" ColumnName="idUsuarioCreacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Controladoras">
+            <EntityTypeMapping TypeName="ConfiguracionDataModel.Controladoras">
+              <MappingFragment StoreEntitySet="Controladoras">
+                <ScalarProperty Name="descripcionControladora" ColumnName="descripcionControladora" />
+                <ScalarProperty Name="NombreControladora" ColumnName="NombreControladora" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="idControladora" ColumnName="idControladora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MetodosControladora">
+            <EntityTypeMapping TypeName="ConfiguracionDataModel.MetodosControladora">
+              <MappingFragment StoreEntitySet="MetodosControladora">
+                <ScalarProperty Name="idControladora" ColumnName="idControladora" />
+                <ScalarProperty Name="vista" ColumnName="vista" />
+                <ScalarProperty Name="nombreMostrar" ColumnName="nombreMostrar" />
+                <ScalarProperty Name="descripcionMetodo" ColumnName="descripcionMetodo" />
+                <ScalarProperty Name="metodo" ColumnName="metodo" />
+                <ScalarProperty Name="idMetodo" ColumnName="idMetodo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

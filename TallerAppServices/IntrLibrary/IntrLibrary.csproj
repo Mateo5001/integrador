@@ -67,6 +67,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Configuracion.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DataModels\Controladoras.cs">
+      <DependentUpon>Configuracion.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataModels\cuentas.cs">
       <DependentUpon>Configuracion.tt</DependentUpon>
     </Compile>
@@ -77,6 +80,9 @@
       <DependentUpon>Configuracion.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModels\menuRoles.cs">
+      <DependentUpon>Configuracion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModels\MetodosControladora.cs">
       <DependentUpon>Configuracion.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModels\roles.cs">
@@ -98,8 +104,10 @@
       <DependentUpon>Configuracion.tt</DependentUpon>
     </Compile>
     <Compile Include="General\Generics.cs" />
+    <Compile Include="objects\ControladoraOBG.cs" />
     <Compile Include="objects\cuenta.cs" />
     <Compile Include="objects\Menu.cs" />
+    <Compile Include="objects\Metodo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="seguridad\seguridad.cs" />
   </ItemGroup>

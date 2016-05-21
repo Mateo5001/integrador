@@ -180,6 +180,7 @@ C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\b
 C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\bin\Antlr3.Runtime.dll
 C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\bin\EntityFramework.dll
 C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\bin\EntityFramework.SqlServer.dll
+C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\bin\IntrLibrary.dll
 C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\bin\Microsoft.AI.Agent.Intercept.dll
 C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\bin\Microsoft.AI.DependencyCollector.dll
 C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\bin\Microsoft.AI.PerfCounterCollector.dll
@@ -211,6 +212,7 @@ C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\b
 C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\bin\System.Web.WebPages.dll
 C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\bin\System.Web.WebPages.Razor.dll
 C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\bin\WebGrease.dll
+C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\bin\IntrLibrary.pdb
 C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\bin\Microsoft.AI.DependencyCollector.xml
 C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\bin\Microsoft.AI.Web.xml
@@ -240,8 +242,6 @@ C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\b
 C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\obj\Debug\TallerAppServices.csprojResolveAssemblyReference.cache
 C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\obj\Debug\TallerAppServices.dll
 C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\obj\Debug\TallerAppServices.pdb
-C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\obj\Debug\TallerAppServices.csprojResolveAssemblyReference.cache
-C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\bin\IntrLibrary.dll
-C:\Users\mateo\Documents\GitHub\integrador\TallerAppServices\TallerAppServices\bin\IntrLibrary.pdb

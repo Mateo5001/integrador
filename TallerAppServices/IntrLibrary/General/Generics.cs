@@ -20,8 +20,26 @@ namespace IntrLibrary.General
                          select new Menu()
                          {
                              IdMenu = me.idMenu,
-                             Controlador = me.controladora,
-                             Metodo=me.metodo
+                             Controlador = me.idControladora,
+                             Metodo = me.metodo,                             
+                             Contr = (from tr in db.Controladoras where tr.idControladora == me.idControladora
+                                      select new ControladoraOBG()
+                                      {
+                                          IdControladora = tr.idControladora,
+                                          Descripcion1 = tr.descripcionControladora,
+                                          NombreControladora = tr.NombreControladora,
+                                          Path = tr.Path,
+                                          Metodos = (from met in db.MetodosControladora where met.idControladora == tr.idControladora
+                                                     select new Metodo()
+                                                     {
+                                                         
+                                                         IdMetodo = met.idMetodo,
+                                                         Descripcion = met.descripcionMetodo,
+                                                         Nombre =met.nombreMostrar,
+                                                         Path=met.metodo
+                                                     }).DefaultIfEmpty().ToList<Metodo>()
+                                      }).FirstOrDefault<ControladoraOBG>()
+                             
                           }
                          ).DefaultIfEmpty().ToList<Menu>();
             }

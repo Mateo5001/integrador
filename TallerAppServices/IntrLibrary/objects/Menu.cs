@@ -9,8 +9,9 @@ namespace IntrLibrary.objects
     public class Menu
     {
         int idMenu;
-        string controlador;
+        int controlador;
         string metodo;
+        ControladoraOBG contr;
 
         public int IdMenu
         {
@@ -25,7 +26,7 @@ namespace IntrLibrary.objects
             }
         }
 
-        public string Controlador
+        public int Controlador
         {
             get
             {
@@ -48,6 +49,19 @@ namespace IntrLibrary.objects
             set
             {
                 metodo = value;
+            }
+        }
+
+        public ControladoraOBG Contr
+        {
+            get
+            {
+                return contr;
+            }
+
+            set
+            {
+                contr = value;
             }
         }
     }

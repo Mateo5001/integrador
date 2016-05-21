@@ -21,10 +21,11 @@ namespace IntrLibrary.DataModels
         }
     
         public int idMenu { get; set; }
-        public string controladora { get; set; }
         public string metodo { get; set; }
+        public int idControladora { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<menuRoles> menuRoles { get; set; }
+        public virtual Controladoras Controladoras { get; set; }
     }
 }

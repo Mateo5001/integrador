@@ -35,5 +35,7 @@ namespace IntrLibrary.DataModels
         public virtual DbSet<ubicaciones> ubicaciones { get; set; }
         public virtual DbSet<ubicacionesDetalle> ubicacionesDetalle { get; set; }
         public virtual DbSet<ubicacionesDetalleLote> ubicacionesDetalleLote { get; set; }
+        public virtual DbSet<Controladoras> Controladoras { get; set; }
+        public virtual DbSet<MetodosControladora> MetodosControladora { get; set; }
     }
 }

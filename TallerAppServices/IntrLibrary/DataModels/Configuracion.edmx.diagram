@@ -21,6 +21,10 @@
         <AssociationConnector Association="ConfiguracionDataModel.FK_ubicacionesDetalleLote_tintas" ManuallyRouted="false" />
         <AssociationConnector Association="ConfiguracionDataModel.FK_U_UD" ManuallyRouted="false" />
         <AssociationConnector Association="ConfiguracionDataModel.FK_ubicacionesDetalleLote_ubicacionesDetalle" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ConfiguracionDataModel.Controladoras" Width="1.5" PointX="3.5" PointY="9" />
+        <EntityTypeShape EntityType="ConfiguracionDataModel.MetodosControladora" Width="1.5" PointX="5.75" PointY="10.875" />
+        <AssociationConnector Association="ConfiguracionDataModel.FK_menu_Controladoras" />
+        <AssociationConnector Association="ConfiguracionDataModel.FK_MetodosControladora_Controladoras" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
