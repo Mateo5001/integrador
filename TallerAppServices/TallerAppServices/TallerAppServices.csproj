@@ -198,6 +198,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ConfiguracionController.cs" />
     <Compile Include="Controllers\cuentasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -242,7 +243,6 @@
     <Compile Include="Models\lineas.cs">
       <DependentUpon>invModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\roles.cs">
       <DependentUpon>invModel.tt</DependentUpon>
     </Compile>
@@ -352,11 +352,6 @@
     <Content Include="Views\usuarios\Details.cshtml" />
     <Content Include="Views\usuarios\Edit.cshtml" />
     <Content Include="Views\usuarios\Index.cshtml" />
-    <Content Include="Views\tiposDocumentos\Create.cshtml" />
-    <Content Include="Views\tiposDocumentos\Delete.cshtml" />
-    <Content Include="Views\tiposDocumentos\Details.cshtml" />
-    <Content Include="Views\tiposDocumentos\Edit.cshtml" />
-    <Content Include="Views\tiposDocumentos\Index.cshtml" />
     <Content Include="Views\roles\Create.cshtml" />
     <Content Include="Views\roles\Delete.cshtml" />
     <Content Include="Views\roles\Details.cshtml" />
@@ -368,6 +363,12 @@
     <Content Include="Views\cuentas\Edit.cshtml" />
     <Content Include="Views\cuentas\Index.cshtml" />
     <Content Include="Views\Shared\menu.cshtml" />
+    <Content Include="Views\tiposDocumentos\Create.cshtml" />
+    <Content Include="Views\tiposDocumentos\Delete.cshtml" />
+    <Content Include="Views\tiposDocumentos\Details.cshtml" />
+    <Content Include="Views\tiposDocumentos\Edit.cshtml" />
+    <Content Include="Views\tiposDocumentos\Index.cshtml" />
+    <Content Include="Views\Configuracion\creTD.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

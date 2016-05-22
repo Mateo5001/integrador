@@ -52,10 +52,9 @@ namespace TallerAppServices.Controllers
             {
                 db.tiposDocumentos.Add(tiposDocumentos);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("creTD", "Configuracion", new { guardado = 1 });
             }
-
-            return View(tiposDocumentos);
+            return RedirectToAction("~/Configuracion/creTD?guardado=2");
         }
 
         // GET: tiposDocumentos/Edit/5

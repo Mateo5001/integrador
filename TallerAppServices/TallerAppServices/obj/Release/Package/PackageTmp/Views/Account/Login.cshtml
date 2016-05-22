@@ -1,7 +1,7 @@
 ﻿@using TallerAppServices.Models
 @model LoginViewModel
 @{
-    ViewBag.Title = "Inicio de Sesion";
+    ViewBag.Title = "Bienvenido a ColorSave";
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -17,7 +17,7 @@
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <h4>Ingrese su informacion:</h4>
+                <h4>Ingrese su Cuenta:</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
@@ -45,7 +45,9 @@
                 </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Iniciar Sesion" class="btn btn-default" />
+                    <button onclick="" value="Iniciar Sesion" class="btn btn-primary" >
+                        Iniciar Session  <span class="glyphicon glyphicon-log-in "></span>
+                    </button>
                 </div>
             </div>
 
