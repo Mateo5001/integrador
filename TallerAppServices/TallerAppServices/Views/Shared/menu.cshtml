@@ -34,7 +34,6 @@
                         @{
                             foreach (Metodo met in opcion.Contr.Metodos)
                             {
-                                //<a data-toggle="tab" href="@opcion.Contr.Path/@met.Path"></a>
                                 <li>@Html.ActionLink(met.Nombre, @met.Path, opcion.Contr.Path)</li>
                             }
                         }

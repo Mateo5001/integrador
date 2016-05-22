@@ -1,0 +1,40 @@
+﻿@using IntrLibrary.DataModels
+
+@{
+    ConfiguracionEntity conf = new ConfiguracionEntity();
+    var lista = (from cont in conf.Controladoras select cont).DefaultIfEmpty();
+}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    locacion 
+                </th>
+                <th>
+                    Controladora
+                </th>
+                <th>
+                    descripcion Controladora
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+    
+    @foreach (var item in lista) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Path)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreControladora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripcionControladora)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.idControladora }) 
+            </td>
+        </tr>
+    }
+    
+    </table>

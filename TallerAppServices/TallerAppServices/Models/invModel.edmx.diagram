@@ -37,6 +37,14 @@
         <AssociationConnector Association="inv001Model.FK_ubicaciones_usuarios" />
         <AssociationConnector Association="inv001Model.FK_ubicacionesDetalleLote_ubicacionesDetalle" />
         <AssociationConnector Association="inv001Model.FK_ubicacionesDetalleLote_usuarios" />
+        <EntityTypeShape EntityType="inv001Model.Controladoras" Width="1.5" PointX="8.375" PointY="2.5" />
+        <EntityTypeShape EntityType="inv001Model.menu" Width="1.5" PointX="10.625" PointY="4.25" />
+        <EntityTypeShape EntityType="inv001Model.menuRoles" Width="1.5" PointX="12.875" PointY="4.875" />
+        <EntityTypeShape EntityType="inv001Model.MetodosControladora" Width="1.5" PointX="10.625" PointY="1.125" />
+        <AssociationConnector Association="inv001Model.FK_menu_Controladoras" />
+        <AssociationConnector Association="inv001Model.FK_MetodosControladora_Controladoras" />
+        <AssociationConnector Association="inv001Model.FK_menuRoles_menu" />
+        <AssociationConnector Association="inv001Model.FK_menuRoles_roles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

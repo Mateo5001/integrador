@@ -88,7 +88,7 @@
                     </div>
                     <div class="col-md-8 pull-right fade in active">
                         @RenderBody()
-
+                        
                     </div>
                     }
                     else
@@ -101,12 +101,12 @@
 
                
             </div>
-                <hr />
-                <footer>
-                    <p>&copy; @DateTime.Now.Year - powered by Azure</p>
-                </footer>
 
         </div>
+    <div class="navbar-inverse navbar-fixed-bottom ">
+
+            <kbd>&copy; @DateTime.Now.Year - powered by Windows Azure</kbd> <kbd class="pull-right">Authors : Daniel Miranda , Jhonatan Amezquita</kbd>
+    </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

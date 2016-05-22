@@ -20,6 +20,15 @@
     <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
     <Property Name="inactivo" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="Controladoras">
+    <Key>
+      <PropertyRef Name="idControladora" />
+    </Key>
+    <Property Name="idControladora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Path" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NombreControladora" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="descripcionControladora" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="cuentas">
     <Key>
       <PropertyRef Name="idCuenta" />
@@ -59,6 +68,33 @@
     <Property Name="codigoLinea" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="idUsuarioCreacion" Type="int" Nullable="false" />
     <Property Name="fechaCreacion" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="menu">
+    <Key>
+      <PropertyRef Name="idMenu" />
+    </Key>
+    <Property Name="idMenu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idControladora" Type="int" Nullable="false" />
+    <Property Name="metodo" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="menuRoles">
+    <Key>
+      <PropertyRef Name="idMenuRole" />
+    </Key>
+    <Property Name="idMenuRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idRole" Type="int" Nullable="false" />
+    <Property Name="idMenu" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MetodosControladora">
+    <Key>
+      <PropertyRef Name="idMetodo" />
+    </Key>
+    <Property Name="idMetodo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="metodo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="descripcionMetodo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="nombreMostrar" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="vista" Type="varchar" MaxLength="50" />
+    <Property Name="idControladora" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="roles">
     <Key>
@@ -242,6 +278,54 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_menu_Controladoras">
+    <End Role="Controladoras" Type="Self.Controladoras" Multiplicity="1" />
+    <End Role="menu" Type="Self.menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Controladoras">
+        <PropertyRef Name="idControladora" />
+      </Principal>
+      <Dependent Role="menu">
+        <PropertyRef Name="idControladora" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_menuRoles_menu">
+    <End Role="menu" Type="Self.menu" Multiplicity="1" />
+    <End Role="menuRoles" Type="Self.menuRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="menu">
+        <PropertyRef Name="idMenu" />
+      </Principal>
+      <Dependent Role="menuRoles">
+        <PropertyRef Name="idMenu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_menuRoles_roles">
+    <End Role="roles" Type="Self.roles" Multiplicity="1" />
+    <End Role="menuRoles" Type="Self.menuRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="idRole" />
+      </Principal>
+      <Dependent Role="menuRoles">
+        <PropertyRef Name="idRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MetodosControladora_Controladoras">
+    <End Role="Controladoras" Type="Self.Controladoras" Multiplicity="1" />
+    <End Role="MetodosControladora" Type="Self.MetodosControladora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Controladoras">
+        <PropertyRef Name="idControladora" />
+      </Principal>
+      <Dependent Role="MetodosControladora">
+        <PropertyRef Name="idControladora" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tintas_lineas">
     <End Role="lineas" Type="Self.lineas" Multiplicity="1" />
     <End Role="tintas" Type="Self.tintas" Multiplicity="*" />
@@ -365,10 +449,14 @@
   <EntityContainer Name="inv001ModelStoreContainer">
     <EntitySet Name="colorDetalle" EntityType="Self.colorDetalle" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="colores" EntityType="Self.colores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Controladoras" EntityType="Self.Controladoras" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="cuentas" EntityType="Self.cuentas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="inventarioMovimientosDetalle" EntityType="Self.inventarioMovimientosDetalle" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="inventariosMovimientos" EntityType="Self.inventariosMovimientos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="lineas" EntityType="Self.lineas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="menu" EntityType="Self.menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="menuRoles" EntityType="Self.menuRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MetodosControladora" EntityType="Self.MetodosControladora" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tintas" EntityType="Self.tintas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tiposDocumentos" EntityType="Self.tiposDocumentos" Schema="dbo" store:Type="Tables" />
@@ -411,6 +499,22 @@
     <AssociationSet Name="FK_lineas_usuarios" Association="Self.FK_lineas_usuarios">
       <End Role="usuarios" EntitySet="usuarios" />
       <End Role="lineas" EntitySet="lineas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_menu_Controladoras" Association="Self.FK_menu_Controladoras">
+      <End Role="Controladoras" EntitySet="Controladoras" />
+      <End Role="menu" EntitySet="menu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_menuRoles_menu" Association="Self.FK_menuRoles_menu">
+      <End Role="menu" EntitySet="menu" />
+      <End Role="menuRoles" EntitySet="menuRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_menuRoles_roles" Association="Self.FK_menuRoles_roles">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="menuRoles" EntitySet="menuRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MetodosControladora_Controladoras" Association="Self.FK_MetodosControladora_Controladoras">
+      <End Role="Controladoras" EntitySet="Controladoras" />
+      <End Role="MetodosControladora" EntitySet="MetodosControladora" />
     </AssociationSet>
     <AssociationSet Name="FK_tintas_lineas" Association="Self.FK_tintas_lineas">
       <End Role="lineas" EntitySet="lineas" />

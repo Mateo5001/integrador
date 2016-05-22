@@ -148,5 +148,45 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Controladoras">
+      <EntityTypeMapping TypeName="inv001Model.Controladoras">
+        <MappingFragment StoreEntitySet="Controladoras">
+          <ScalarProperty Name="descripcionControladora" ColumnName="descripcionControladora" />
+          <ScalarProperty Name="NombreControladora" ColumnName="NombreControladora" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="idControladora" ColumnName="idControladora" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="menu">
+      <EntityTypeMapping TypeName="inv001Model.menu">
+        <MappingFragment StoreEntitySet="menu">
+          <ScalarProperty Name="metodo" ColumnName="metodo" />
+          <ScalarProperty Name="idControladora" ColumnName="idControladora" />
+          <ScalarProperty Name="idMenu" ColumnName="idMenu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="menuRoles">
+      <EntityTypeMapping TypeName="inv001Model.menuRoles">
+        <MappingFragment StoreEntitySet="menuRoles">
+          <ScalarProperty Name="idMenu" ColumnName="idMenu" />
+          <ScalarProperty Name="idRole" ColumnName="idRole" />
+          <ScalarProperty Name="idMenuRole" ColumnName="idMenuRole" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MetodosControladora">
+      <EntityTypeMapping TypeName="inv001Model.MetodosControladora">
+        <MappingFragment StoreEntitySet="MetodosControladora">
+          <ScalarProperty Name="idControladora" ColumnName="idControladora" />
+          <ScalarProperty Name="vista" ColumnName="vista" />
+          <ScalarProperty Name="nombreMostrar" ColumnName="nombreMostrar" />
+          <ScalarProperty Name="descripcionMetodo" ColumnName="descripcionMetodo" />
+          <ScalarProperty Name="metodo" ColumnName="metodo" />
+          <ScalarProperty Name="idMetodo" ColumnName="idMetodo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

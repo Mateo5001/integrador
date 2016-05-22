@@ -20,5 +20,9 @@ namespace TallerAppServices.Controllers
             ViewBag.AlertaGuardad = guardado;
             return View();
         }
+        public ActionResult creacionMenus()
+        {
+            return View();
+        }
     }
 }

@@ -38,5 +38,9 @@ namespace TallerAppServices.Models
         public virtual DbSet<lineas> lineas { get; set; }
         public virtual DbSet<tintas> tintas { get; set; }
         public virtual DbSet<ubicacionesDetalleLote> ubicacionesDetalleLote { get; set; }
+        public virtual DbSet<Controladoras> Controladoras { get; set; }
+        public virtual DbSet<menu> menu { get; set; }
+        public virtual DbSet<menuRoles> menuRoles { get; set; }
+        public virtual DbSet<MetodosControladora> MetodosControladora { get; set; }
     }
 }

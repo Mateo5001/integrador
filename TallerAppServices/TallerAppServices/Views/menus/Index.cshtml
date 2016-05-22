@@ -1,0 +1,40 @@
+﻿
+@using IntrLibrary.DataModels
+
+@{
+    ConfiguracionEntity conf = new ConfiguracionEntity();
+    var lista = (from cont in conf.menu select cont).DefaultIfEmpty();
+}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                <kbd>codMenu</kbd>
+            </th>
+            <th>
+                <kbd>Controladora</kbd>
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in lista)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.metodo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Controladoras.NombreControladora)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.idMenu }) 
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

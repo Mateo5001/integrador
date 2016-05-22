@@ -12,21 +12,19 @@ namespace TallerAppServices.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class roles
+    public partial class menu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public roles()
+        public menu()
         {
-            this.usuarios = new HashSet<usuarios>();
             this.menuRoles = new HashSet<menuRoles>();
         }
     
-        public int idRole { get; set; }
-        public string nombreRole { get; set; }
-        public string codigoRole { get; set; }
+        public int idMenu { get; set; }
+        public int idControladora { get; set; }
+        public string metodo { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<usuarios> usuarios { get; set; }
+        public virtual Controladoras Controladoras { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<menuRoles> menuRoles { get; set; }
     }

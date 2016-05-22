@@ -199,9 +199,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ConfiguracionController.cs" />
+    <Compile Include="Controllers\ControladorasController.cs" />
     <Compile Include="Controllers\cuentasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\menusController.cs" />
     <Compile Include="Controllers\rolesController.cs" />
     <Compile Include="Controllers\tiposDocumentosController.cs" />
     <Compile Include="Controllers\usuariosController.cs" />
@@ -213,6 +215,9 @@
       <DependentUpon>invModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\colores.cs">
+      <DependentUpon>invModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Controladoras.cs">
       <DependentUpon>invModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\cuentas.cs">
@@ -241,6 +246,15 @@
       <DependentUpon>invModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\lineas.cs">
+      <DependentUpon>invModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\menu.cs">
+      <DependentUpon>invModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\menuRoles.cs">
+      <DependentUpon>invModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MetodosControladora.cs">
       <DependentUpon>invModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\roles.cs">
@@ -369,6 +383,19 @@
     <Content Include="Views\tiposDocumentos\Edit.cshtml" />
     <Content Include="Views\tiposDocumentos\Index.cshtml" />
     <Content Include="Views\Configuracion\creTD.cshtml" />
+    <Content Include="Views\menus\Create.cshtml" />
+    <Content Include="Views\menus\Delete.cshtml" />
+    <Content Include="Views\menus\Details.cshtml" />
+    <Content Include="Views\menus\Edit.cshtml" />
+    <Content Include="Views\menus\Index.cshtml" />
+    <Content Include="Views\Configuracion\creacionMenus.cshtml" />
+    <Content Include="Views\Configuracion\confMenu.cshtml" />
+    <Content Include="Views\Controladoras\Create.cshtml" />
+    <Content Include="Views\Controladoras\Delete.cshtml" />
+    <Content Include="Views\Controladoras\Details.cshtml" />
+    <Content Include="Views\Controladoras\Edit.cshtml" />
+    <Content Include="Views\Controladoras\Index.cshtml" />
+    <Content Include="Views\Configuracion\contConf.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
