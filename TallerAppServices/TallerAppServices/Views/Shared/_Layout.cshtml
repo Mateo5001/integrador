@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - ColorSave 2.0</title>
+    <link rel="icon" href="~/Extra/Images/LOG.png" />
+    <title> - @ViewBag.Title - ColorSave 2.0</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <script src="~/Scripts/_layoutJS/_layoutJS.js"></script>
@@ -27,8 +28,11 @@
                 <div class="container">
                     <div class="navbar-header">
 
-                        @Html.ActionLink("ColorSave 2.0", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-
+                        @*@Html.ActionLink("ColorSave 2.0", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" ,  })*@
+                        <a href='@Url.Action("Index", "Home")' class="navbar-brand ">
+                                <img src='@Url.Content("~/Extra/Images/LOG.png")' class="navbar-fixed-top" style="width:7%"   />
+                                ColorSave 2.0
+                        </a>
                         <button type="button" class="btn navbar-static-top navbar-toggle pull-right" data-toggle="collapse" data-target="#menuTop">
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>

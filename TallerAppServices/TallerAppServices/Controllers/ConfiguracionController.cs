@@ -22,6 +22,7 @@ namespace TallerAppServices.Controllers
         }
         public ActionResult creacionMenus()
         {
+            ViewBag.idControladora = new SelectList(db.Controladoras, "idControladora", "Path");
             return View();
         }
     }

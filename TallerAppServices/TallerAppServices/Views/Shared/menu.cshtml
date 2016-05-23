@@ -2,6 +2,13 @@
 @using IntrLibrary.objects;
 
 
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+
+
 
 <div class="col-md-6">
     <div class="tab-content">
@@ -12,7 +19,7 @@
                 var menus = Generics.listaMenu();
                 foreach (Menu opcion in menus)
                 {
-                    <li><a data-toggle="tab" href="#@opcion.Metodo">@opcion.Contr.NombreControladora</a></li>
+                    <li title="@opcion.Contr.Descripcion1" data-toggle="tooltrip"><a data-toggle="tab" href="#@opcion.Metodo">@opcion.Contr.NombreControladora</a></li>
                 }
             }
         </ul>
