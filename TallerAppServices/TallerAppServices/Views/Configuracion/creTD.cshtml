@@ -1,14 +1,14 @@
 ﻿
 @{
-    ViewBag.Title = "Configuracion de Documentos";
+    ViewBag.Title = "Configuración de Documentos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Condiguracion de documentos</h2>
+<h2>Configuración de Documentos</h2>
 <div class="col-md-12">
 
     <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#lisTD">listdo</a></li>
+        <li class="active"><a data-toggle="tab" href="#lisTD">Listado</a></li>
         <li><a data-toggle="tab" href="#CTD">Crear</a></li>
     </ul>
 
@@ -19,19 +19,19 @@
                 {
                     <div class="alert alert-success">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <strong>Datos Guardados!</strong> se ha guardado el tipo de documento exitosamente
+                        <strong>Datos Guardados!</strong> Se ha guardado el tipo de documento correctamente.
                     </div>
                 }
                 else if(guar==2)
                 {
                     <div class="alert alert-danger">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <strong>ha ocurrido un error!</strong> no se han guardado los cambios
+                        <strong>Ha ocurrido un error!</strong> No se han guardado los cambios
                     </div>
             }
         }
         <div id="CTD" class="tab-pane fade">
-            <h3>Creacion de Tipos de Documento</h3>
+            <h3>Creación de Tipos de Documento</h3>
             @{Html.RenderPartial("~/Views/tiposDocumentos/Create.cshtml");}
         </div>
         <div id="lisTD" class="tab-pane fade in active">
