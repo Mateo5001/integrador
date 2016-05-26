@@ -29,9 +29,7 @@
             @Html.DisplayFor(modelItem => item.codigoRole)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idRole }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idRole }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idRole })
+            @Html.ActionLink("Edit", "Edit","roles", new { id=item.idRole },null) |
         </td>
     </tr>
 }

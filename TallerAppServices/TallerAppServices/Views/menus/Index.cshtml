@@ -31,7 +31,7 @@
                     @Html.DisplayFor(modelItem => item.Controladoras.NombreControladora)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.idMenu }) 
+                    @Html.ActionLink("Edit", "Edit","menus", new { id = item.idMenu },null) 
                 </td>
             </tr>
         }
