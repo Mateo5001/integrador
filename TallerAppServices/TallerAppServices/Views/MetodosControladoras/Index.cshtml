@@ -1,0 +1,37 @@
+﻿@using IntrLibrary.DataModels
+
+@{
+    ConfiguracionEntity conf = new ConfiguracionEntity();
+    var lista = (from cont in conf.MetodosControladora select cont).DefaultIfEmpty();
+}
+    <table class="table">
+        <tr>
+            <th>
+                <kbd>MetodoControladora</kbd>
+            </th>
+            <th>
+               <kbd>descripcion</kbd>
+            </th>
+            <th>
+                <kbd>Titulo Metodo</kbd>
+            </th>
+        </tr>
+    
+    @foreach (var item in lista) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.metodo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripcionMetodo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreMostrar)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.idMetodo }) 
+            </td>
+        </tr>
+    }
+    
+    </table>

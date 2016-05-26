@@ -1,0 +1,24 @@
+﻿
+<h2>Configuracion de Metodos</h2>
+
+
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#listaMetodo">listado</a></li>
+    <li><a data-toggle="tab" href="#creacMetodos">Creado</a></li>
+</ul>
+
+<div class="tab-content">
+    <div id="listaMetodo" class="tab-pane fade in active">
+        <h3>listado de Metodos</h3>
+        <p>
+            @Html.Partial("~/Views/MetodosControladoras/Index.cshtml")
+        </p>
+    </div>
+    <div id="creacMetodos" class="tab-pane fade">
+        <h3>Creacion de metodos</h3>
+        <p>
+            @Html.Partial("~/Views/MetodosControladoras/Create.cshtml")
+        </p>
+    </div>
+</div>
+

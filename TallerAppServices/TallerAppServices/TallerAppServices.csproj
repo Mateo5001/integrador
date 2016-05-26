@@ -204,6 +204,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\menusController.cs" />
+    <Compile Include="Controllers\MetodosControladorasController.cs" />
     <Compile Include="Controllers\rolesController.cs" />
     <Compile Include="Controllers\tiposDocumentosController.cs" />
     <Compile Include="Controllers\usuariosController.cs" />
@@ -397,6 +398,12 @@
     <Content Include="Views\Controladoras\Edit.cshtml" />
     <Content Include="Views\Controladoras\Index.cshtml" />
     <Content Include="Views\Configuracion\contConf.cshtml" />
+    <Content Include="Views\MetodosControladoras\Create.cshtml" />
+    <Content Include="Views\MetodosControladoras\Delete.cshtml" />
+    <Content Include="Views\MetodosControladoras\Details.cshtml" />
+    <Content Include="Views\MetodosControladoras\Edit.cshtml" />
+    <Content Include="Views\MetodosControladoras\Index.cshtml" />
+    <Content Include="Views\Configuracion\creMeto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
