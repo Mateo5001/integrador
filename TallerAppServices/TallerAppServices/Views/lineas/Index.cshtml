@@ -1,0 +1,59 @@
+﻿@model IEnumerable<TallerAppServices.Models.lineas>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nombreLinea)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.codigoLinea)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fechaCreacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.usuarios.identificacion)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreLinea)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.codigoLinea)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaCreacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.usuarios.identificacion)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.idLinea }) |
+                @Html.ActionLink("Details", "Details", new { id=item.idLinea }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.idLinea })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

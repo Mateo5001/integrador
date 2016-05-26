@@ -202,10 +202,13 @@
     <Compile Include="Controllers\ControladorasController.cs" />
     <Compile Include="Controllers\cuentasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\lineasController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\menuRolesController.cs" />
     <Compile Include="Controllers\menusController.cs" />
     <Compile Include="Controllers\MetodosControladorasController.cs" />
     <Compile Include="Controllers\rolesController.cs" />
+    <Compile Include="Controllers\tintasController.cs" />
     <Compile Include="Controllers\tiposDocumentosController.cs" />
     <Compile Include="Controllers\usuariosController.cs" />
     <Compile Include="Global.asax.cs">
@@ -404,6 +407,21 @@
     <Content Include="Views\MetodosControladoras\Edit.cshtml" />
     <Content Include="Views\MetodosControladoras\Index.cshtml" />
     <Content Include="Views\Configuracion\creMeto.cshtml" />
+    <Content Include="Views\tintas\Create.cshtml" />
+    <Content Include="Views\tintas\Delete.cshtml" />
+    <Content Include="Views\tintas\Details.cshtml" />
+    <Content Include="Views\tintas\Edit.cshtml" />
+    <Content Include="Views\tintas\Index.cshtml" />
+    <Content Include="Views\lineas\Create.cshtml" />
+    <Content Include="Views\lineas\Delete.cshtml" />
+    <Content Include="Views\lineas\Details.cshtml" />
+    <Content Include="Views\lineas\Edit.cshtml" />
+    <Content Include="Views\lineas\Index.cshtml" />
+    <Content Include="Views\menuRoles\Create.cshtml" />
+    <Content Include="Views\menuRoles\Delete.cshtml" />
+    <Content Include="Views\menuRoles\Details.cshtml" />
+    <Content Include="Views\menuRoles\Edit.cshtml" />
+    <Content Include="Views\menuRoles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

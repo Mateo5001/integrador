@@ -1,0 +1,74 @@
+﻿@model TallerAppServices.Models.tintas
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>tintas</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.nombreTinta)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.nombreTinta)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.codigoTinta)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.codigoTinta)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.fechaCreacion)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.fechaCreacion)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.inactivo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.inactivo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.lineas.nombreLinea)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.lineas.nombreLinea)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.usuarios.identificacion)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.usuarios.identificacion)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.idTinta }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

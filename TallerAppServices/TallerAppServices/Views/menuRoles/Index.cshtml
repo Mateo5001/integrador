@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TallerAppServices.Models.menuRoles>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.menu.metodo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.roles.nombreRole)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.menu.metodo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.roles.nombreRole)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.idMenuRole }) |
+                @Html.ActionLink("Details", "Details", new { id=item.idMenuRole }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.idMenuRole })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
