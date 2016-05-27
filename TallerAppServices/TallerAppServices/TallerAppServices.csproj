@@ -198,6 +198,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\colorDetallesController.cs" />
+    <Compile Include="Controllers\coloresController.cs" />
     <Compile Include="Controllers\ConfiguracionController.cs" />
     <Compile Include="Controllers\ControladorasController.cs" />
     <Compile Include="Controllers\cuentasController.cs" />
@@ -208,6 +210,7 @@
     <Compile Include="Controllers\menuRolesController.cs" />
     <Compile Include="Controllers\menusController.cs" />
     <Compile Include="Controllers\MetodosControladorasController.cs" />
+    <Compile Include="Controllers\mezclasController.cs" />
     <Compile Include="Controllers\rolesController.cs" />
     <Compile Include="Controllers\tintasController.cs" />
     <Compile Include="Controllers\tiposDocumentosController.cs" />
@@ -332,6 +335,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\colores\colores.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -427,6 +431,17 @@
     <Content Include="Views\Configuracion\rolesMenu.cshtml" />
     <Content Include="Views\Elementos\lineas.cshtml" />
     <Content Include="Views\Elementos\Tintas.cshtml" />
+    <Content Include="Views\colores\Create.cshtml" />
+    <Content Include="Views\colores\Delete.cshtml" />
+    <Content Include="Views\colores\Details.cshtml" />
+    <Content Include="Views\colores\Edit.cshtml" />
+    <Content Include="Views\colores\Index.cshtml" />
+    <Content Include="Views\colorDetalles\Create.cshtml" />
+    <Content Include="Views\colorDetalles\Delete.cshtml" />
+    <Content Include="Views\colorDetalles\Details.cshtml" />
+    <Content Include="Views\colorDetalles\Edit.cshtml" />
+    <Content Include="Views\colorDetalles\Index.cshtml" />
+    <Content Include="Views\mezclas\colores.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "colores";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript" src="~/Scripts/colores/colores.js"></script>
+
+<h2>colores</h2>
+
+<div class="col-md-12">
+
+    @*<ul  class="nav nav-tabs">
+        <li class="active"><a id="primer" href="#Encabezado">creacion de Colores</a></li>
+        <li><a id="segund"  href="#detalle">creacion de ColoresDetalle</a></li>
+    </ul>*@
+
+    <h3>Creación de Colores</h3>
+    <div class="tab-content">
+        <div id="Encabezado" class="row">
+            @{Html.RenderPartial("~/Views/colores/Create.cshtml");}
+        </div>
+        <div id="detalle" class="row">
+            @{Html.RenderPartial("~/Views/colorDetalles/Create.cshtml");}
+        </div>
+        <div id="lista" class="row">
+        </div>
+    </div>
+</div>

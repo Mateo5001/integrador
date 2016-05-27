@@ -1,0 +1,43 @@
+﻿@model TallerAppServices.Models.colorDetalle
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>colorDetalle</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidadPorcentaje)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidadPorcentaje)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.colores.nombreColor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.colores.nombreColor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tintas.nombreTinta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tintas.nombreTinta)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idColorDetalle }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

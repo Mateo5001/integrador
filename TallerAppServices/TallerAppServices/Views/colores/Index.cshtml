@@ -1,0 +1,58 @@
+﻿@model IEnumerable<TallerAppServices.Models.colores>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombreColor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.codigoColor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaRegistro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.inactivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usuarios.identificacion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombreColor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.codigoColor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaRegistro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.inactivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.usuarios.identificacion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idColor }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idColor }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idColor })
+        </td>
+    </tr>
+}
+
+</table>

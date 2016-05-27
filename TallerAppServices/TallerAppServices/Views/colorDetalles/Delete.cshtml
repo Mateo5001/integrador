@@ -1,0 +1,49 @@
+﻿@model TallerAppServices.Models.colorDetalle
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>colorDetalle</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidadPorcentaje)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidadPorcentaje)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.colores.nombreColor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.colores.nombreColor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tintas.nombreTinta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tintas.nombreTinta)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

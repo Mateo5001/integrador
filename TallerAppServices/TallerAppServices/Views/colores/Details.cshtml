@@ -1,0 +1,59 @@
+﻿@model TallerAppServices.Models.colores
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>colores</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombreColor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreColor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codigoColor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codigoColor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaRegistro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaRegistro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.inactivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.inactivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usuarios.identificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuarios.identificacion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idColor }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
