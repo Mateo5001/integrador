@@ -20,20 +20,21 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.cantidadPorcentaje)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.colores.nombreColor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tintas.nombreTinta)
-        </td>
-        <td>
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.cantidadPorcentaje)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.colores.nombreColor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tintas.nombreTinta)
+            </td>
+            <td></td>
+        </tr>
+    }
 
 </table>
+

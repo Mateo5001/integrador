@@ -22,6 +22,10 @@
         }
     }
 }
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="row">
             <div class="col">
@@ -112,8 +116,5 @@
             <kbd>&copy; @DateTime.Now.Year - powered by Windows Azure</kbd> <kbd class="pull-right">Authors : Daniel Miranda , Jhonatan Amezquita , Daniel Reyes</kbd>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
 </body>
 </html>

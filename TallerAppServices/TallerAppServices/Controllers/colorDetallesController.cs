@@ -45,6 +45,29 @@ namespace TallerAppServices.Controllers
             return View();
         }
 
+        [HttpPost]
+        public int Guardar([Bind(Include = "idColorDetalle,idColor,idTinta,cantidadPorcentaje")] colorDetalle colorDetalle)
+        {
+            if (ModelState.IsValid)
+            {
+                db.colorDetalle.Add(colorDetalle);
+                db.SaveChanges();
+                return colorDetalle.idColorDetalle;
+            }
+
+            ViewBag.idColor = new SelectList(db.colores, "idColor", "nombreColor", colorDetalle.idColor);
+            ViewBag.idTinta = new SelectList(db.tintas, "idTinta", "nombreTinta", colorDetalle.idTinta);
+            return 0;
+        }
+
+        public ActionResult lista(int? id=0)
+        {
+            
+            var colorDetalle =(from colDet in db.colorDetalle where colDet.idColor==id.Value select colDet);
+            return View(colorDetalle.ToList());
+        }
+
+
         // POST: colorDetalles/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.

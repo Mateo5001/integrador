@@ -442,6 +442,7 @@
     <Content Include="Views\colorDetalles\Edit.cshtml" />
     <Content Include="Views\colorDetalles\Index.cshtml" />
     <Content Include="Views\mezclas\colores.cshtml" />
+    <Content Include="Views\colorDetalles\lista.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

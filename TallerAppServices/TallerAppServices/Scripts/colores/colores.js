@@ -9,9 +9,22 @@ $(document).ready(function () {
                           $('#Encabezado').css("display", "none");
                           $('#detalle').html('');
                           $.get("../colorDetalles/create", function (data2) {
-                              alert(data2);
+
                               $('#detalle').html(data2);
+                              $('#idColor').val(data);
                               $('#detalle').css("display", "block");
+                              $('#btnAgregar').click(function () {
+                                  $('#listaTintas').html('');
+
+                                  $.post("../colorDetalles/Guardar", $("#FromDetalle").serialize())
+                                  $('#cantidadPorcentaje').val('');
+                                  alert('"../colorDetalles/lista/"'+data);
+                                  $.get('../colorDetalles/lista/'+data, function (data3) {
+                                      $('#listaTintas').html(data3);
+                                  })
+
+
+                              })
                           });
                           $('#detalle').css("display", "block");
 
