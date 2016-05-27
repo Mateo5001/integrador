@@ -18,7 +18,6 @@ $(document).ready(function () {
 
                                   $.post("../colorDetalles/Guardar", $("#FromDetalle").serialize())
                                   $('#cantidadPorcentaje').val('');
-                                  alert('"../colorDetalles/lista/"'+data);
                                   $.get('../colorDetalles/lista/'+data, function (data3) {
                                       $('#listaTintas').html(data3);
                                   })

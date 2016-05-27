@@ -1,0 +1,18 @@
+﻿@model TallerAppServices.Models.colorDetalle
+@{ 
+    ViewBag.Title = "Listado de colores";
+}
+
+<script  type="text/javascript" src="~/Scripts/colores/listadoColores.js"></script>
+<div class="container">
+    <h2>Listado de colores</h2>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.idColor, "Color", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("idColor", null,"Seleccionar", htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.idColor, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div id="detalleColores"></div>
+</div>

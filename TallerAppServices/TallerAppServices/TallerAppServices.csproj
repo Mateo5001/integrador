@@ -336,6 +336,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\colores\colores.js" />
+    <Content Include="Scripts\colores\listadoColores.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -443,6 +444,7 @@
     <Content Include="Views\colorDetalles\Index.cshtml" />
     <Content Include="Views\mezclas\colores.cshtml" />
     <Content Include="Views\colorDetalles\lista.cshtml" />
+    <Content Include="Views\mezclas\listarColores.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
