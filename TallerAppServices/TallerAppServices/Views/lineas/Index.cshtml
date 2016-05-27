@@ -1,59 +1,45 @@
-﻿@model IEnumerable<TallerAppServices.Models.lineas>
+﻿
+@using IntrLibrary.DataModels
 
 @{
-    Layout = null;
+    ConfiguracionEntity conf = new ConfiguracionEntity();
+    var lista = (from cont in conf.lineas select cont).DefaultIfEmpty();
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
+<table class="table table-hover">
+    <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.nombreLinea)
+                <kbd>  nombreLinea </kbd>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.codigoLinea)
+                <kbd>codigoLinea</kbd>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.fechaCreacion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.usuarios.identificacion)
+                <kbd> fechaCreacion</kbd>
             </th>
             <th></th>
         </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.nombreLinea)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.codigoLinea)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fechaCreacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.usuarios.identificacion)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.idLinea }) |
-                @Html.ActionLink("Details", "Details", new { id=item.idLinea }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.idLinea })
-            </td>
-        </tr>
+    </thead>
+
+    @foreach (var item in lista)
+    {
+        if (item != null)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombreLinea)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.codigoLinea)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fechaCreacion)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit","lineas", new { id = item.idLinea },null)
+                </td>
+            </tr>
+        }
     }
-    
-    </table>
-</body>
-</html>
+
+</table>

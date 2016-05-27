@@ -201,6 +201,7 @@
     <Compile Include="Controllers\ConfiguracionController.cs" />
     <Compile Include="Controllers\ControladorasController.cs" />
     <Compile Include="Controllers\cuentasController.cs" />
+    <Compile Include="Controllers\ElementosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\lineasController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -424,6 +425,8 @@
     <Content Include="Views\menuRoles\Index.cshtml" />
     <Content Include="Views\Configuracion\confRoles.cshtml" />
     <Content Include="Views\Configuracion\rolesMenu.cshtml" />
+    <Content Include="Views\Elementos\lineas.cshtml" />
+    <Content Include="Views\Elementos\Tintas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

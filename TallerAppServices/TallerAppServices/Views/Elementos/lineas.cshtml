@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "lineas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>lineas</h2>
+<div class="col-md-12">
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#listaLineas">Listado</a></li>
+        <li><a data-toggle="tab" href="#creacionLineas">Crear</a></li>
+    </ul>
+
+    <div class="tab-content">
+        
+        <div id="creacionLineas" class="tab-pane fade">
+            <h3>Creación de Lineas</h3>
+            @{Html.RenderPartial("~/Views/lineas/Create.cshtml");}
+        </div>
+        <div id="listaLineas" class="tab-pane fade in active">
+            <h3>Listado</h3>
+
+            @Html.Partial("~/Views/lineas/index.cshtml")
+        </div>
+    </div>
+</div>
+
+

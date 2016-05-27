@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Tintas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tintas</h2>
+<div class="col-md-12">
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#tintasLineas">Listado</a></li>
+        <li><a data-toggle="tab" href="#creaciontintas">Crear</a></li>
+    </ul>
+
+    <div class="tab-content">
+
+        <div id="creaciontintas" class="tab-pane fade">
+            <h3>Creación de Tintas</h3>
+            @{Html.RenderPartial("~/Views/tintas/Create.cshtml");}
+        </div>
+        <div id="tintasLineas" class="tab-pane fade in active">
+            <h3>Listado</h3>
+
+            @Html.Partial("~/Views/tintas/index.cshtml")
+        </div>
+    </div>
+</div>

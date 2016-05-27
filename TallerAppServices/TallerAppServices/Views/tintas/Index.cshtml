@@ -1,44 +1,33 @@
-﻿@model IEnumerable<TallerAppServices.Models.tintas>
+﻿@using IntrLibrary.DataModels
 
 @{
-    Layout = null;
+    ConfiguracionEntity conf = new ConfiguracionEntity();
+    var lista = (from cont in conf.tintas select cont).DefaultIfEmpty();
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.nombreTinta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.codigoTinta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.fechaCreacion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.inactivo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.lineas.nombreLinea)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.usuarios.identificacion)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    nombreTinta
+                </th>
+                <th>
+                    codigoTinta
+                </th>
+                <th>
+                    fechaCreacion
+                </th>
+                <th>
+                    inactivo
+                </th>
+                <th>
+                    nombreLinea
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+    @foreach (var item in lista) {
+        if (item != null)
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.nombreTinta)
@@ -56,16 +45,12 @@
                 @Html.DisplayFor(modelItem => item.lineas.nombreLinea)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.usuarios.identificacion)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.idTinta }) |
-                @Html.ActionLink("Details", "Details", new { id=item.idTinta }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.idTinta })
+                @Html.ActionLink("Edit", "Edit", "tintas", new { id = item.idTinta }) 
             </td>
         </tr>
+        }
     }
-    
-    </table>
+
+    </table
 </body>
 </html>

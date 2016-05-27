@@ -55,7 +55,7 @@ namespace TallerAppServices.Controllers
             {
                 db.lineas.Add(lineas);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("lineas","Elementos");
             }
 
             ViewBag.idUsuarioCreacion = new SelectList(db.usuarios, "idUsuario", "identificacion", lineas.idUsuarioCreacion);
@@ -89,7 +89,7 @@ namespace TallerAppServices.Controllers
             {
                 db.Entry(lineas).State = EntityState.Modified;
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("lineas", "Elementos");
             }
             ViewBag.idUsuarioCreacion = new SelectList(db.usuarios, "idUsuario", "identificacion", lineas.idUsuarioCreacion);
             return View(lineas);

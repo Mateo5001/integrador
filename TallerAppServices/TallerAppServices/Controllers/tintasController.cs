@@ -56,7 +56,7 @@ namespace TallerAppServices.Controllers
             {
                 db.tintas.Add(tintas);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Tintas","Elementos");
             }
 
             ViewBag.idLinea = new SelectList(db.lineas, "idLinea", "nombreLinea", tintas.idLinea);
@@ -92,7 +92,7 @@ namespace TallerAppServices.Controllers
             {
                 db.Entry(tintas).State = EntityState.Modified;
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Tintas", "Elementos");
             }
             ViewBag.idLinea = new SelectList(db.lineas, "idLinea", "nombreLinea", tintas.idLinea);
             ViewBag.idUsuarioCreacion = new SelectList(db.usuarios, "idUsuario", "identificacion", tintas.idUsuarioCreacion);

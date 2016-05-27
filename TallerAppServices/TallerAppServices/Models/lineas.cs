@@ -11,7 +11,7 @@ namespace TallerAppServices.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class lineas
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,6 +24,7 @@ namespace TallerAppServices.Models
         public string nombreLinea { get; set; }
         public string codigoLinea { get; set; }
         public int idUsuarioCreacion { get; set; }
+        [DataType(DataType.Date)]
         public System.DateTime fechaCreacion { get; set; }
     
         public virtual usuarios usuarios { get; set; }
