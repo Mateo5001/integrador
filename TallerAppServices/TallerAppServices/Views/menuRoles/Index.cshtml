@@ -1,32 +1,24 @@
-﻿@model IEnumerable<TallerAppServices.Models.menuRoles>
+﻿@using IntrLibrary.DataModels
 
 @{
-    Layout = null;
+    ConfiguracionEntity conf = new ConfiguracionEntity();
+    var lista = (from cont in conf.menuRoles select cont).DefaultIfEmpty();
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.menu.metodo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.roles.nombreRole)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    <kbd>metodo</kbd>
+                </th>
+                <th>
+                   <kbd>Rol</kbd>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+    @foreach (var item in lista) {
+        if (item != null)
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.menu.metodo)
@@ -35,13 +27,10 @@
                 @Html.DisplayFor(modelItem => item.roles.nombreRole)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.idMenuRole }) |
-                @Html.ActionLink("Details", "Details", new { id=item.idMenuRole }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.idMenuRole })
+                @Html.ActionLink("Edit", "Edit", "menuRoles", new { id = item.idMenuRole }, null) 
             </td>
         </tr>
+        }
     }
-    
+
     </table>
-</body>
-</html>

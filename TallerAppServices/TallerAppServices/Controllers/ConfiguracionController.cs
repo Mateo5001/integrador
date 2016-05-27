@@ -13,6 +13,12 @@ namespace TallerAppServices.Controllers
         // GET: Configuracion
         private inv001Entities db = new inv001Entities();
 
+        public ActionResult confRoles()
+        {
+            ViewBag.idMenu = new SelectList(db.menu, "idMenu", "metodo");
+            ViewBag.idRole = new SelectList(db.roles, "idRole", "nombreRole");
+            return View();
+        }
 
         public ActionResult  creTD(int guardado =3)
         {

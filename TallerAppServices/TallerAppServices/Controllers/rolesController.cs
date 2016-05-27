@@ -52,7 +52,7 @@ namespace TallerAppServices.Controllers
             {
                 db.roles.Add(roles);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("confRoles","Configuracion");
             }
 
             return View(roles);

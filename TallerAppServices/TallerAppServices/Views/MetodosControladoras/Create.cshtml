@@ -1,7 +1,7 @@
 ﻿@model TallerAppServices.Models.MetodosControladora
 
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("create", "MetodosControladoras","POST"))
     {
         @Html.AntiForgeryToken()
 

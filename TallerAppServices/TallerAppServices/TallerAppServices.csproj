@@ -422,6 +422,8 @@
     <Content Include="Views\menuRoles\Details.cshtml" />
     <Content Include="Views\menuRoles\Edit.cshtml" />
     <Content Include="Views\menuRoles\Index.cshtml" />
+    <Content Include="Views\Configuracion\confRoles.cshtml" />
+    <Content Include="Views\Configuracion\rolesMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

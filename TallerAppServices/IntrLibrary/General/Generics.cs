@@ -16,9 +16,10 @@ namespace IntrLibrary.General
         public static List<Menu> listaMenu()
         {
             List<Menu> lista;
+            int rol = int.Parse(HttpContext.Current.Session["idRol"].ToString());
             using (ConfiguracionEntity db = new ConfiguracionEntity())
             {
-                lista = (from me in db.menu
+                lista = (from me in db.menu join roleMenu in db.menuRoles on me.idMenu equals roleMenu.idMenu where roleMenu.idRole==rol
                          select new Menu()
                          {
                              IdMenu = me.idMenu,

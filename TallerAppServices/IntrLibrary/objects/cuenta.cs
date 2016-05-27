@@ -12,6 +12,7 @@ namespace IntrLibrary.objects
         private int idUsuario;
         private string cuentaNom;
         private string password;
+        private int rol;
 
         public int IdCuenta
         {
@@ -62,6 +63,19 @@ namespace IntrLibrary.objects
             set
             {
                 password = value;
+            }
+        }
+
+        public int Rol
+        {
+            get
+            {
+                return rol;
+            }
+
+            set
+            {
+                rol = value;
             }
         }
     }

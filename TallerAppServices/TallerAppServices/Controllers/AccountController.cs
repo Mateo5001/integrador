@@ -99,6 +99,7 @@ namespace TallerAppServices.Controllers
                         IdUsuario = users.idusuario,
                         Password = users.pass,
                         CuentaNom = users.Usuario,
+                        Rol=users.usuarios.idRole
 
                     }).DefaultIfEmpty().FirstOrDefault();//.Take(1).FirstOrDefault();
 
@@ -110,6 +111,8 @@ namespace TallerAppServices.Controllers
             else
             {
                 System.Web.HttpContext.Current.Session["idUsuario"] = dato.IdUsuario;
+
+                System.Web.HttpContext.Current.Session["idRol"] = dato.Rol;
                 return RedirectToLocal("~/Home");
             }
 

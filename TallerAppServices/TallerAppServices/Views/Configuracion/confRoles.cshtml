@@ -1,0 +1,34 @@
+﻿
+
+        @{
+            ViewBag.Title = "Configuración Roles";
+            Layout = "~/Views/Shared/_Layout.cshtml";
+        }
+
+        <h2>Configuración de Documentos</h2>
+        <div class="col-md-12">
+
+            <ul class="nav nav-tabs nav-pills">
+                <li class="active"><a data-toggle="tab" href="#lisRoles">Listado</a></li>
+                <li><a data-toggle="tab" href="#creaRoles">Crear</a></li>
+                <li><a data-toggle="tab" href="#MenuRol">Menus roles</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="creaRoles" class="tab-pane fade">
+                    <h3>Creación de Roles</h3>
+                    @{Html.RenderPartial("~/Views/roles/Create.cshtml");}
+                </div>
+                <div id="lisRoles" class="tab-pane fade in active">
+                    <h3>Listado</h3>
+
+                    @Html.Partial("~/Views/roles/index.cshtml")
+                </div>
+                <div id="MenuRol" class="tab-pane fade">
+                    <h3>Roles por menu</h3>
+
+                    @Html.Partial("~/Views/Configuracion/rolesMenu.cshtml")
+                </div>
+            </div>
+        </div>
+

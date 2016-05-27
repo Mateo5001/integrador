@@ -56,7 +56,7 @@ namespace TallerAppServices.Controllers
             {
                 db.menuRoles.Add(menuRoles);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("confRoles","Configuracion");
             }
 
             ViewBag.idMenu = new SelectList(db.menu, "idMenu", "metodo", menuRoles.idMenu);
