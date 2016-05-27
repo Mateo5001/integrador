@@ -11,7 +11,7 @@ namespace TallerAppServices.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class tintas
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,6 +27,7 @@ namespace TallerAppServices.Models
         public string codigoTinta { get; set; }
         public int idLinea { get; set; }
         public int idUsuarioCreacion { get; set; }
+        [DataType(DataType.Date)]
         public System.DateTime fechaCreacion { get; set; }
         public bool inactivo { get; set; }
     

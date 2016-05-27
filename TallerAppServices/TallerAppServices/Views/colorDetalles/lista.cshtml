@@ -6,7 +6,8 @@
 
 <h2>tintas</h2>
 
-<table class="table">
+<table class="table table-hover" >
+    <thead>
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.cantidadPorcentaje)
@@ -19,6 +20,8 @@
         </th>
         <th></th>
     </tr>
+    </thead>
+
 
     @foreach (var item in Model)
     {

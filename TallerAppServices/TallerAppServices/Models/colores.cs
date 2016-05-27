@@ -11,7 +11,7 @@ namespace TallerAppServices.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class colores
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -26,6 +26,7 @@ namespace TallerAppServices.Models
         public string nombreColor { get; set; }
         public string codigoColor { get; set; }
         public int idUsuarioRegistra { get; set; }
+        [DataType(DataType.Date)]
         public System.DateTime fechaRegistro { get; set; }
         public bool inactivo { get; set; }
     
